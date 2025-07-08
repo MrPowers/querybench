@@ -1,0 +1,17 @@
+site_name: QueryBench
+site_url: https://querybench.com
+theme:
+  name: material
+  features:
+    - content.action.edit
+    - content.code.copy
+    - navigation.footer
+    - navigation.expand
+    - navigation.indexes
+
+nav:
+  - Home: index.md
+  - Methodology: methodology.md
+  - Datasets: datasets.md
+  - Good benchmarks: good-benchmarks.md
+  - h2o benchmarks: h2o-benchmarks.md

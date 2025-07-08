@@ -1,4 +1,69 @@
-# Contributing to MrPowers Benchmarks
+# Contributing to QueryBench
+
+## Running the benchmarks on your machine
+
+Use [falsa](https://github.com/mrpowers-io/falsa) to generate the dataset.
+
+You can use this command: `falsa groupby --path-prefix=~/data --size SMALL --data-format PARQUET`.
+
+Here's how to run the benchmarks in this project: `uv run benchmarks/run_all_groupby.py /Users/matthewpowers/data/G1_1e8_1e2_0_0.parquet`.
+
+The small dataset has 10 million rows (1e7) and runs quite fast.  The medium dataset has 100 million rows (1e8) and runs slower.  The large dataset has 1 billion rows (1e9) and often causes memory errors - it's a good way to stress test query engines on a single machine.
+
+## Set environment variables
+
+It's easier to run the benchmarks if you set the appropriate environment variables to the datasets:
+
+Here are the environment variables to set (update the file paths depending on where the files are located on your machine):
+
+```
+export G1_1e7_1e2=/Users/matthewpowers/data/G1_1e7_1e2_0_0.parquet
+export G1_1e8_1e2=/Users/matthewpowers/data/G1_1e8_1e2_0_0.parquet
+export J1_1e7_1e1=/Users/matthewpowers/data/J1_1e7_1e1_0_0.parquet
+export J1_1e7_1e4=/Users/matthewpowers/data/J1_1e7_1e4_0_0.parquet
+export J1_1e7_1e7=/Users/matthewpowers/data/J1_1e7_1e7_0_0.parquet
+export J1_1e7_NA=/Users/matthewpowers/data/J1_1e7_NA_0_0.parquet
+export J1_1e8_1e2=/Users/matthewpowers/data/J1_1e8_1e2_0_0.parquet
+export J1_1e8_1e5=/Users/matthewpowers/data/J1_1e8_1e5_0_0.parquet
+export J1_1e8_1e8=/Users/matthewpowers/data/J1_1e8_1e8_0_0.parquet
+export J1_1e8_NA=/Users/matthewpowers/data/J1_1e8_NA_0_0.parquet
+```
+
+## Run scripts
+
+You can type in the full path to the dataset when running commands:
+
+```
+uv run benchmarks/run_all_groupby.py /Users/matthewpowers/data/G1_1e8_1e2_0_0.parquet
+```
+
+Or you can supply an argument with the path to the file:
+
+```
+uv run benchmarks/run_all_groupby.py 1e8
+```
+
+```
+uv run benchmarks/run_all_single_table.py /Users/matthewpowers/data/G1_1e8_1e2_0_0.parquet
+```
+
+```
+uv run benchmarks/datafusion_h2o_join.py /Users/matthewpowers/data/J1_1e7_NA_0_0.parquet /Users/matthewpowers/data/J1_1e7_1e1_0_0.parquet /Users/matthewpowers/data/J1_1e7_1e4_0_0.parquet /Users/matthewpowers/data/J1_1e7_1e7_0_0.parquet
+```
+
+```
+uv run benchmarks/datafusion_h2o_join.py /Users/matthewpowers/data/J1_1e8_NA_0_0.parquet /Users/matthewpowers/data/J1_1e8_1e2_0_0.parquet /Users/matthewpowers/data/J1_1e8_1e5_0_0.parquet /Users/matthewpowers/data/J1_1e8_1e8_0_0.parquet
+```
+
+## Convert CSV to Parquet
+
+Here is how you can convert a CSV file to Parquet: `csv_to_parquet(csv_path, parquet_path)`.
+
+Here is how you can convert a directory of CSV files to Parquet files:
+
+```
+uv run benchmarks/convert_csvs.py ~/Documents/code/cloned/db-benchmark/_data ~/data
+```
 
 ## Generating h2o CSV datasets with h2o R code
 

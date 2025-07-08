@@ -11,4 +11,6 @@ dependencies = [
     "matplotlib>=3.9.3",
     "pandas>=2.2.3",
     "polars>=1.31.0",
+    "mkdocs",
+    "mkdocs-material",
 ]
