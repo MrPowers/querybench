@@ -13,5 +13,8 @@ nav:
   - Home: index.md
   - Methodology: methodology.md
   - Datasets: datasets.md
+  - Queries: queries.md
   - Good benchmarks: good-benchmarks.md
-  - h2o benchmarks: h2o-benchmarks.md
+  - Other Benchmarks:
+    - h2o: other-benchmarks/h2o.md
+    - clickbench: other-benchmarks/clickbench.md

@@ -1,6 +1,6 @@
 # Contributing to QueryBench
 
-## Running the benchmarks on your machine
+## Generating datasets
 
 Use [falsa](https://github.com/mrpowers-io/falsa) to generate the dataset.
 

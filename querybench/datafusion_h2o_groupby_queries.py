@@ -1,8 +1,12 @@
 from helpers import benchmark, get_results
 
 def q1(ctx):
-    query = "select id1, sum(v1) as v1 from x group by id1"
-    return ctx.sql(query).collect()
+    sql = """
+    select id1, sum(v1) as v1
+    from x
+    group by id1
+    """
+    return ctx.sql(sql).collect()
 
 
 def q2(ctx):
