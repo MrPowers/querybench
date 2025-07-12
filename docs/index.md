@@ -6,12 +6,11 @@ For example, here's an example of some groupby queries on a 100 million row data
 
 ![](./images/groupby-fast-1e8.png)
 
-We can see that some engines outperform for some queries and underperform for others.  We can also see that some engines generally outperform for this particular methodology.
+Here are the Clickbench benchmarks for a different dataset and set of queries:
 
-These results are useful for different audiencies:
+![](./images/clickbench.png)
 
-* companies that want to select the best engine for their workloads
-* query engine developers who want to optimize the performance of their engine
+Some engines outperform for some queries and underperform for others.
 
 ## QueryBench methodology
 
