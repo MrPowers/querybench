@@ -1,6 +1,6 @@
 # ClickBench Benchmarks Pros and Cons
 
-The Clickbench benchmarks are based on a dataset with XX rows and XX columns.  The `hits.parquet` file is 14.8 GB in storage.
+The Clickbench benchmarks are based on a dataset with 99,537,185 rows and XX columns.  The `hits.parquet` file is 14.8 GB in storage.
 
 They contain queries like the following:
 

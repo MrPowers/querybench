@@ -88,7 +88,16 @@ def q20(df):
 
 def q21(df):
     hits = df
-    return daft.sql("SELECT SearchPhrase, MIN(URL), COUNT(*) AS c FROM hits WHERE URL LIKE '%google%' AND SearchPhrase <> '' GROUP BY SearchPhrase ORDER BY c DESC LIMIT 10;").collect()
+    return daft.sql(
+        """
+        SELECT SearchPhrase, MIN(URL), COUNT(*) AS c 
+        FROM hits 
+        WHERE URL LIKE '%google%' AND SearchPhrase <> '' 
+        GROUP BY SearchPhrase
+        ORDER BY c DESC 
+        LIMIT 10;
+        """
+    ).collect()
 
 def q22(df):
     hits = df
@@ -218,8 +227,8 @@ def run_benchmarks(df):
     benchmark(q30, df, benchmarks=benchmarks, name="q30")
     benchmark(q31, df, benchmarks=benchmarks, name="q31")
     benchmark(q32, df, benchmarks=benchmarks, name="q32")
-    benchmark(q33, df, benchmarks=benchmarks, name="q33")
-    benchmark(q34, df, benchmarks=benchmarks, name="q34")
+    # benchmark(q33, df, benchmarks=benchmarks, name="q33")
+    # benchmark(q34, df, benchmarks=benchmarks, name="q34")
     # benchmark(q35, df, benchmarks=benchmarks, name="q35")
     # benchmark(q36, df, benchmarks=benchmarks, name="q36")
     # benchmark(q37, df, benchmarks=benchmarks, name="q37")

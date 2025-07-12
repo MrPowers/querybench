@@ -6,12 +6,11 @@ import pandas as pd
 import datafusion_clickbench_queries
 import daft_clickbench_queries
 import polars_clickbench_queries
+import duckdb_clickbench_queries
 from datafusion import SessionContext
 import os
 
 path = sys.argv[1]
-
-# Fast clickhouse queries
 
 # polars
 print("*** Polars ***")
@@ -33,25 +32,25 @@ datafusion_res = datafusion_clickbench_queries.run_benchmarks(ctx).rename(column
 print(datafusion_res)
 
 # daft
-# print("*** Daft ***")
-# df = daft.read_parquet(path)
-# daft_res = daft_clickbench_queries.run_benchmarks(df).rename(columns={"duration": "daft"})
+print("*** Daft ***")
+df = daft.read_parquet(path)
+daft_res = daft_clickbench_queries.run_benchmarks(df).rename(columns={"duration": "daft"})
 
 # duckdb
-# print("*** DuckDB ***")
-# duckdb_res = duckdb_h2o_groupby_queries.run_benchmarks([path]).rename(columns={"duration": "duckdb"})
+print("*** DuckDB ***")
+duckdb_res = duckdb_clickbench_queries.run_benchmarks(path).rename(columns={"duration": "duckdb"})
 
 # all results
 res = (
-    datafusion_res
-    .join(polars_res, on="task")
+    polars_res
+    .join(datafusion_res, on="task")
     # .join(daft_res, on="task")
-    # .join(duckdb_res, on="task")
+    .join(duckdb_res, on="task")
 )
 print(res)
-print("***")
-print(res.columns)
-# res = polars_res
+
+# res = duckdb_res
+# print(res)
 
 slow_queries = ['q18', 'q22', 'q23', 'q28', 'q32', 'q33', 'q34']
 
