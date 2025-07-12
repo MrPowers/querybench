@@ -56,7 +56,7 @@ if num_rows:
     ax.set_title(f'Fast h2o groupby queries ({num_rows})')
     ax.set_ylabel('Seconds')
     ax.set_xlabel('Queries')
-    ax.figure.savefig(f"images/groupby-fast-{num_rows}.png")
+    ax.figure.savefig(f"images/groupby-fast-{num_rows}.svg")
 
 # Slow group by queries
 
@@ -91,4 +91,4 @@ if num_rows:
     ax.set_title(f'Slower h2o groupby queries ({num_rows})')
     ax.set_ylabel('Seconds')
     ax.set_xlabel('Queries')
-    ax.figure.savefig(f"images/groupby-slow-{num_rows}.png")
+    ax.figure.savefig(f"images/groupby-slow-{num_rows}.svg")

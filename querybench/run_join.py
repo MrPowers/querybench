@@ -80,4 +80,4 @@ if num_rows:
     ax.set_title(f'h2o join queries ({num_rows})')
     ax.set_ylabel('Seconds')
     ax.set_xlabel('Queries')
-    ax.figure.savefig(f"images/h2o-join-{num_rows}.png")
+    ax.figure.savefig(f"images/h2o-join-{num_rows}.svg")

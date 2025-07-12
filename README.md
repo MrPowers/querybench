@@ -16,27 +16,27 @@ This repo provides clear instructions on how to generate the datasets and descri
 
 Here are the results for the h2o groupby queries on the 10 million row dataset (stored in a single Parquet file):
 
-![fast_h2o_groupby_1e7](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/groupby-fast-1e7.png)
+![fast_h2o_groupby_1e7](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/groupby-fast-1e7.svg)
 
 Here are the results for the h2o groupby queries on the 100 million row dataset:
 
-![fast_h2o_groupby_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/groupby-fast-1e8.png)
+![fast_h2o_groupby_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/groupby-fast-1e8.svg)
 
 Here are the longer-running group by queries:
 
-![slow_h2o_groupby_1e7](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/groupby-slow-1e7.png)
+![slow_h2o_groupby_1e7](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/groupby-slow-1e7.svg)
 
 Here they are on the bigger dataset:
 
-![slow_h2o_groupby_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/groupby-slow-1e8.png)
+![slow_h2o_groupby_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/groupby-slow-1e8.svg)
 
 Here are the results for the h2o join queries on the 1e7 dataset:
 
-![h2o_join_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/h2o-join-1e7.png)
+![h2o_join_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/h2o-join-1e7.svg)
 
 And here are the results on the 1e8 dataset:
 
-![h2o_join_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/h2o-join-1e8.png)
+![h2o_join_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/h2o-join-1e8.svg)
 
 These queries were run on a Macbook M3 with 16 GB of RAM.
 
@@ -49,8 +49,8 @@ Here's how the benchmarking methdology differs from the h2o benchmarks:
 
 Here are the results for single table queries on the 1e7 dataset:
 
-![single_table_1e7](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/single-table-1e7.png)
+![single_table_1e7](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/single-table-1e7.svg)
 
 And here are the results on the 1e8 table: 
 
-![single_table_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/single-table-1e8.png)
+![single_table_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/single-table-1e8.svg)
