@@ -98,6 +98,24 @@ The Clickbench dataset is small and the queries can easily be run on a single la
 
 The Clickbench dataset could be 10 times larger and that would give an interesting 147.8 GB dataset to test a distributed engine.
 
+**Some metadata-only queries**
+
+The first query can be computed from the Parquet metadata alone: `"SELECT COUNT(*) FROM hits;"`.
+
+The query engine can simply fetch the row count from the metadata of every row group in the file and compute the sum.
+
+It's important to verify that engines use metadata to run queries faster when possible, but it's not particularily interesting after that's been confirmed.
+
+**Lots of quick queries**
+
+A large portion of the queries (around 26) can be run in under a second on a Macbook M3 with 16 GB of RAM.  
+
+10 queries finish between 1 and 3 seconds.
+
+The remaining 6 queries take more than 3 seconds to run.
+
+The queries are skewed to lightweight workflows that can run very quickly.
+
 ## Conclusion
 
 Querybench is a great benchmarking analysis and a great contribution to the data community.

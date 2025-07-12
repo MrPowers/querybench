@@ -2,7 +2,7 @@
 
 This repo performs benchmarking analysis on common datasets with popular query engines like pandas, Polars, DataFusion, and PySpark.  For example, here are the slower ClickBench benchmarks for a few select engines:
 
-![clickbench-slow](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/clickbench-slow.png)
+![clickbench-slow](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/clickbench-slow.svg)
 
 It draws inspiration from the [h2o benchmarks](https://github.com/h2oai/db-benchmark) but also includes different types of queries and uses some different execution methodologies (e.g. modern file formats).
 
