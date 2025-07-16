@@ -58,3 +58,15 @@ Here are the results for single table queries on the 1e7 dataset:
 And here are the results on the 1e8 table: 
 
 ![single_table_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/single-table-1e8.svg)
+
+## ClickBench queries
+
+Here are the fast ClickBench queries:
+
+![clickbench-fast.svg](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/clickbench-fast.svg)
+
+Here are the slow ClickBench queries: 
+
+![clickbench-slow.svg](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/clickbench-slow.svg)
+
+
