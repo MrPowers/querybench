@@ -12,7 +12,17 @@ Most readers of this repo are interested in the benchmarking results and don't a
 
 This repo provides clear instructions on how to generate the datasets and descriptions of the results, so you can easily gain intuition about the actual benchmarks that are run.
 
-## h2o groupby results on localhost with revised methodology
+## h2o join on localhost
+
+Here are the results for the h2o join queries on the 1e7 dataset:
+
+![h2o_join_1e7](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/h2o-join-1e7.svg)
+
+And here are the results on the 1e8 dataset:
+
+![h2o_join_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/h2o-join-1e8.svg)
+
+## h2o groupby on localhost
 
 Here are the results for the h2o groupby queries on the 10 million row dataset (stored in a single Parquet file):
 
@@ -30,13 +40,7 @@ Here they are on the bigger dataset:
 
 ![slow_h2o_groupby_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/groupby-slow-1e8.svg)
 
-Here are the results for the h2o join queries on the 1e7 dataset:
-
-![h2o_join_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/h2o-join-1e7.svg)
-
-And here are the results on the 1e8 dataset:
-
-![h2o_join_1e8](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/h2o-join-1e8.svg)
+## Revised h2o methodology
 
 These queries were run on a Macbook M3 with 16 GB of RAM.
 

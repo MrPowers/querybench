@@ -43,5 +43,9 @@ uv run -m querybench.run_groupby 1e8
 ```
 
 ```
+uv run -m querybench.run_join 1e7
+```
+
+```
 uv run -m querybench.run_single_table 1e7
 ```
