@@ -1,5 +1,5 @@
 import daft
-from helpers import benchmark, get_results
+from querybench.helpers import benchmark, get_results
 
 
 def q0(df):

@@ -3,10 +3,10 @@ import daft
 
 import sys
 import pandas as pd
-import polars_h2o_join_queries
-import datafusion_h2o_join_queries
+import querybench.polars.polars_h2o_join_queries as polars_h2o_join_queries
+import querybench.datafusion.datafusion_h2o_join_queries as datafusion_h2o_join_queries
 import querybench.daft.daft_h2o_join_queries as daft_h2o_join_queries
-import duckdb_h2o_join_queries
+import querybench.duckdb.duckdb_h2o_join_queries as duckdb_h2o_join_queries
 from datafusion import SessionContext
 import os
 

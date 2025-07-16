@@ -3,8 +3,8 @@ import daft
 
 import sys
 import pandas as pd
-import polars_single_table_queries
-import datafusion_single_table_queries
+import querybench.polars.polars_single_table_queries as polars_single_table_queries
+import querybench.datafusion.datafusion_single_table_queries as datafusion_single_table_queries
 import querybench.daft.daft_single_table_queries as daft_single_table_queries
 from datafusion import SessionContext
 import os

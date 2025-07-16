@@ -3,10 +3,10 @@ import daft
 
 import sys
 import pandas as pd
-import datafusion_clickbench_queries
+import querybench.datafusion.datafusion_clickbench_queries as datafusion_clickbench_queries
 import querybench.daft.daft_clickbench_queries as daft_clickbench_queries
-import polars_clickbench_queries
-import duckdb_clickbench_queries
+import querybench.polars.polars_clickbench_queries as polars_clickbench_queries
+import querybench.duckdb.duckdb_clickbench_queries as duckdb_clickbench_queries
 from datafusion import SessionContext
 import os
 

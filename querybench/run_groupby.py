@@ -3,10 +3,10 @@ import daft
 
 import sys
 import pandas as pd
-from querybench import polars_h2o_groupby_queries
-from  querybench import datafusion_h2o_groupby_queries
+from querybench.polars import polars_h2o_groupby_queries
+from querybench.datafusion import datafusion_h2o_groupby_queries
 from querybench.daft import daft_h2o_groupby_queries
-from  querybench import duckdb_h2o_groupby_queries
+from querybench.duckdb import duckdb_h2o_groupby_queries
 from datafusion import SessionContext
 import os
 

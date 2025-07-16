@@ -1,5 +1,5 @@
 import duckdb
-from helpers import benchmark, get_results
+from querybench.helpers import benchmark, get_results
 import sys
 import pandas as pd
 

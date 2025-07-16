@@ -1,8 +1,8 @@
 import pyspark.sql.functions as F
-from helpers import benchmark, get_results
+from querybench.helpers import benchmark, get_results
 import sys
 import pandas as pd
-from pyspark_h2o_groupby_queries import *
+from querybench.pyspark.pyspark_h2o_groupby_queries import *
 import pyspark
 
 path = sys.argv[1]

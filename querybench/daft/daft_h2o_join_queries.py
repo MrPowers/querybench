@@ -1,5 +1,5 @@
 import daft
-from helpers import benchmark, get_results
+from querybench.helpers import benchmark, get_results
 from daft.sql import SQLCatalog
 
 def q1(dfs):

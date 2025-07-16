@@ -1,4 +1,4 @@
-from helpers import benchmark, get_results
+from querybench.helpers import benchmark, get_results
 
 def q1(ctx):
     query = "select id1, id2, max(v3) as max_v3 from x group by id1, id2 order by max_v3 desc limit 5"

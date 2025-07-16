@@ -1,5 +1,5 @@
 from querybench.helpers import benchmark, get_results
-import clickbench_queries
+import querybench.datafusion.clickbench_queries as clickbench_queries
 
 
 def q0(ctx):

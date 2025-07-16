@@ -1,5 +1,5 @@
 import polars as pl
-from helpers import benchmark, get_results
+from querybench.helpers import benchmark, get_results
 from datetime import date
 
 
