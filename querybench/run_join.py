@@ -5,7 +5,7 @@ import sys
 import pandas as pd
 import polars_h2o_join_queries
 import datafusion_h2o_join_queries
-import daft_h2o_join_queries
+import querybench.daft.daft_h2o_join_queries as daft_h2o_join_queries
 import duckdb_h2o_join_queries
 from datafusion import SessionContext
 import os
@@ -68,10 +68,10 @@ print(daft_res)
 
 # all results
 res = (
-    polars_res
-    .join(datafusion_res, on="task")
+    datafusion_res
     .join(daft_res, on="task")
-    # .join(duckdb_res, on="task"
+    # .join(duckdb_res, on="task")
+    .join(polars_res, on="task")
 )
 print(res)
 

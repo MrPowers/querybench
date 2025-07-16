@@ -1,6 +1,6 @@
 import polars as pl
 from polars import col
-from helpers import benchmark, get_results
+from querybench.helpers import benchmark, get_results
 
 
 def q1(df):

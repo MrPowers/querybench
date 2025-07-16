@@ -5,7 +5,7 @@ import sys
 import pandas as pd
 import polars_single_table_queries
 import datafusion_single_table_queries
-import daft_single_table_queries
+import querybench.daft.daft_single_table_queries as daft_single_table_queries
 from datafusion import SessionContext
 import os
 
@@ -36,7 +36,11 @@ df = daft.read_parquet(path)
 daft_res = daft_single_table_queries.run_benchmarks([df]).rename(columns={"duration": "daft"})
 
 # all results
-res = polars_res.join(datafusion_res, on="task").join(daft_res, on="task")
+res = (
+    datafusion_res
+    .join(daft_res, on="task")
+    .join(polars_res, on="task")
+)
 print(res)
 
 if num_rows:

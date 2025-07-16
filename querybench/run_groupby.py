@@ -3,10 +3,10 @@ import daft
 
 import sys
 import pandas as pd
-import polars_h2o_groupby_queries
-import datafusion_h2o_groupby_queries
-import daft_h2o_groupby_queries
-import duckdb_h2o_groupby_queries
+from querybench import polars_h2o_groupby_queries
+from  querybench import datafusion_h2o_groupby_queries
+from querybench.daft import daft_h2o_groupby_queries
+from  querybench import duckdb_h2o_groupby_queries
 from datafusion import SessionContext
 import os
 
@@ -44,10 +44,10 @@ duckdb_res = duckdb_h2o_groupby_queries.run_benchmarks([path]).rename(columns={"
 
 # all results
 res = (
-    polars_res
-    .join(datafusion_res, on="task")
+    datafusion_res
     .join(daft_res, on="task")
     .join(duckdb_res, on="task")
+    .join(polars_res, on="task")
 )
 print(res)
 

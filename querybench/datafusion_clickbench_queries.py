@@ -1,4 +1,4 @@
-from helpers import benchmark, get_results
+from querybench.helpers import benchmark, get_results
 import clickbench_queries
 
 

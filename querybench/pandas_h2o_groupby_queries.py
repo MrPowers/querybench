@@ -1,4 +1,4 @@
-import pandas as pd
+import querybench.pandas as pd
 from helpers import benchmark, get_results
 
 

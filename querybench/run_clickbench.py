@@ -4,7 +4,7 @@ import daft
 import sys
 import pandas as pd
 import datafusion_clickbench_queries
-import daft_clickbench_queries
+import querybench.daft.daft_clickbench_queries as daft_clickbench_queries
 import polars_clickbench_queries
 import duckdb_clickbench_queries
 from datafusion import SessionContext
@@ -42,10 +42,10 @@ duckdb_res = duckdb_clickbench_queries.run_benchmarks(path).rename(columns={"dur
 
 # all results
 res = (
-    polars_res
-    .join(datafusion_res, on="task")
-    # .join(daft_res, on="task")
+    datafusion_res
+    .join(daft_res, on="task")
     .join(duckdb_res, on="task")
+    .join(polars_res, on="task")
 )
 print(res)
 
