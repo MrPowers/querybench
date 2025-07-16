@@ -52,13 +52,16 @@ print(res)
 # res = duckdb_res
 # print(res)
 
+very_fast_queries = ['q0', 'q1', 'q2', 'q3', 'q6', 'q7', 'q10', 'q11', 'q19', 'q36', 'q37', 'q38', 'q39', 'q40', 'q41', 'q42']
 slow_queries = ['q18', 'q22', 'q23', 'q28', 'q32', 'q33', 'q34']
 
 # DataFrame with rows where 'task' is in the list
 df_slow = res[res.index.isin(slow_queries)]
 
 # DataFrame with the remaining rows
-df_fast = res[~res.index.isin(slow_queries)]
+df_fast = res[~res.index.isin(slow_queries + very_fast_queries)]
+
+df_very_fast = res[res.index.isin(very_fast_queries)]
 
 # make slow plot
 ax = df_slow.plot.bar(rot=0)
@@ -77,3 +80,13 @@ ax.tick_params(axis='x', labelsize=5)
 ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
 ax.figure.savefig(f"images/clickbench-fast.svg")
 ax.figure.savefig(f"docs/images/clickbench-fast.svg")
+
+# make very fast plot
+ax = df_very_fast.plot.bar(rot=0)
+ax.set_title(f'ClickBench Very Fast Queries')
+ax.set_ylabel('Seconds')
+ax.set_xlabel('Queries')
+ax.tick_params(axis='x', labelsize=5)
+ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+ax.figure.savefig(f"images/clickbench-very-fast.svg")
+ax.figure.savefig(f"docs/images/clickbench-very-fast.svg")
