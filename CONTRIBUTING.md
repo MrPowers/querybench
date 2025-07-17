@@ -53,3 +53,5 @@ uv run -m querybench.run_single_table 1e7
 ```
 uv run -m querybench.run_clickbench $clickbench
 ```
+
+These scripts output benchmarks in `images/`.

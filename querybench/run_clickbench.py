@@ -43,9 +43,9 @@ duckdb_res = duckdb_clickbench_queries.run_benchmarks(path).rename(columns={"dur
 # all results
 res = (
     datafusion_res
-    .join(daft_res, on="task")
     .join(duckdb_res, on="task")
     .join(polars_res, on="task")
+    .join(daft_res, on="task")
 )
 print(res)
 

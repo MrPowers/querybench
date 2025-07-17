@@ -38,8 +38,8 @@ daft_res = daft_single_table_queries.run_benchmarks([df]).rename(columns={"durat
 # all results
 res = (
     datafusion_res
-    .join(daft_res, on="task")
     .join(polars_res, on="task")
+    .join(daft_res, on="task")
 )
 print(res)
 

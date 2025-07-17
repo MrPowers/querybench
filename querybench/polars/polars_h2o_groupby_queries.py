@@ -72,18 +72,6 @@ def run_benchmarks(dfs):
     benchmark(q7, df, benchmarks=polars_benchmarks, name="q7")
     benchmark(q8, df, benchmarks=polars_benchmarks, name="q8")
     benchmark(q9, df, benchmarks=polars_benchmarks, name="q9")
-
-    polars_res_temp = get_results(polars_benchmarks).set_index("task")
-    return polars_res_temp
-
-
-def run_benchmarks_slow(dfs):
-    df = dfs[0]
-    polars_benchmarks = {
-        "duration": [],  # in seconds
-        "task": [],
-    }
-
     benchmark(q10, df, benchmarks=polars_benchmarks, name="q10")
 
     polars_res_temp = get_results(polars_benchmarks).set_index("task")

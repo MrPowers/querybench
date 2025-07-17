@@ -43,6 +43,16 @@ def q10(path):
     return duckdb.sql(f"select id1, id2, id3, id4, id5, id6, sum(v3) as v3, count(*) as count from read_parquet('{path}') group by id1, id2, id3, id4, id5, id6").df()
 
 
+import traceback
+
+# try:
+#     con = duckdb.connect()
+#     con.execute("SELECT * FROM huge_table CROSS JOIN huge_table")
+# except Exception:
+#     print("Exception caught:")
+#     traceback.print_exc()
+
+
 paths = [sys.argv[1]]
 def run_benchmarks(paths):
     path = paths[0]
@@ -61,21 +71,6 @@ def run_benchmarks(paths):
     benchmark(q7, dfs=path, benchmarks=duckdb_benchmarks, name="q7")
     benchmark(q8, dfs=path, benchmarks=duckdb_benchmarks, name="q8")
     benchmark(q9, dfs=path, benchmarks=duckdb_benchmarks, name="q9")
-    # benchmark(q10, dfs=path, benchmarks=duckdb_benchmarks, name="q10")
-
-    duckdb_res_temp = get_results(duckdb_benchmarks).set_index("task")
-    print(duckdb_res_temp)
-    return duckdb_res_temp
-
-
-def run_benchmarks_slow(paths):
-    path = paths[0]
-
-    duckdb_benchmarks = {
-        "duration": [],  # in seconds
-        "task": [],
-    }
-
     benchmark(q10, dfs=path, benchmarks=duckdb_benchmarks, name="q10")
 
     duckdb_res_temp = get_results(duckdb_benchmarks).set_index("task")

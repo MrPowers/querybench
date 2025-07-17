@@ -4,6 +4,7 @@ import sys
 import pandas as pd
 import duckdb
 import os
+import traceback
 
 
 def q1(paths):
@@ -62,7 +63,11 @@ def run_benchmarks(paths):
         "task": [],
     }
 
-    benchmark(q1, dfs=paths, benchmarks=benchmarks, name="q1")
+    try:
+        benchmark(q1, dfs=paths, benchmarks=benchmarks, name="q1")
+    except Exception:
+        traceback.print_exc()
+    
     benchmark(q2, dfs=paths, benchmarks=benchmarks, name="q2")
     benchmark(q3, dfs=paths, benchmarks=benchmarks, name="q3")
     benchmark(q4, dfs=paths, benchmarks=benchmarks, name="q4")

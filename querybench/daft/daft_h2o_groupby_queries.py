@@ -61,18 +61,6 @@ def run_benchmarks(dfs):
     benchmark(q7, df, benchmarks=benchmarks, name="q7")
     # benchmark(q8, df, benchmarks=benchmarks, name="q8")
     # benchmark(q9, df, benchmarks=benchmarks, name="q9")
-
-    res = get_results(benchmarks).set_index("task")
-    return res
-
-
-def run_benchmarks_slow(dfs):
-    df = dfs[0]
-    benchmarks = {
-        "duration": [],
-        "task": [],
-    }
-
     benchmark(q10, df, benchmarks=benchmarks, name="q10")
 
     res = get_results(benchmarks).set_index("task")

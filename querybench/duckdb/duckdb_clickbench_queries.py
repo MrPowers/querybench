@@ -216,7 +216,6 @@ def run_benchmarks(path):
     benchmark(q8, dfs=path, benchmarks=duckdb_benchmarks, name="q8")
     benchmark(q9, dfs=path, benchmarks=duckdb_benchmarks, name="q9")
     benchmark(q10, dfs=path, benchmarks=duckdb_benchmarks, name="q10")
-    benchmark(q10, dfs=path, benchmarks=duckdb_benchmarks, name="q10")
     benchmark(q11, dfs=path, benchmarks=duckdb_benchmarks, name="q11")
     benchmark(q12, dfs=path, benchmarks=duckdb_benchmarks, name="q12")
     benchmark(q13, dfs=path, benchmarks=duckdb_benchmarks, name="q13")

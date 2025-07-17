@@ -72,17 +72,6 @@ def run_benchmarks(ctx):
     benchmark(q7, ctx, benchmarks=benchmarks, name="q7")
     benchmark(q8, ctx, benchmarks=benchmarks, name="q8")
     benchmark(q9, ctx, benchmarks=benchmarks, name="q9")
-
-    res = get_results(benchmarks).set_index("task")
-    return res
-
-
-def run_benchmarks_slow(ctx):
-    benchmarks = {
-        "duration": [],
-        "task": [],
-    }
-
     benchmark(q10, ctx, benchmarks=benchmarks, name="q10")
 
     res = get_results(benchmarks).set_index("task")
