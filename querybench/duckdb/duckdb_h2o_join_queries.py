@@ -1,9 +1,5 @@
 from querybench.helpers import benchmark, get_results
-from datafusion import SessionContext, SessionConfig
-import sys
-import pandas as pd
 import duckdb
-import os
 import traceback
 
 
@@ -63,10 +59,10 @@ def run_benchmarks(paths):
         "task": [],
     }
 
-    try:
-        benchmark(q1, dfs=paths, benchmarks=benchmarks, name="q1")
-    except Exception:
-        traceback.print_exc()
+    # try:
+    benchmark(q1, dfs=paths, benchmarks=benchmarks, name="q1")
+    # except Exception:
+        # traceback.print_exc()
     
     benchmark(q2, dfs=paths, benchmarks=benchmarks, name="q2")
     benchmark(q3, dfs=paths, benchmarks=benchmarks, name="q3")

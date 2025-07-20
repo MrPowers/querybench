@@ -2,6 +2,13 @@
 
 This page covers the logic behind the various queries in QueryBench.
 
+## QueryBench
+
+### Single table
+
+TODO: Add some single table queries on the Clickhouse table
+
+
 ## h2o groupby
 
 **Note: This section assums the 1e8 dataset size**
@@ -48,9 +55,6 @@ This query returns XX rows.
 
 
 
-## Single table
-
-TODO: Add some single table queries on the Clickhouse table
 
 ## Clickbench
 

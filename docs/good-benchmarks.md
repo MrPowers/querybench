@@ -1,12 +1,34 @@
-# How to write good benchmarks
+# How to write good data engine benchmarks
+
+This page shows how to write high-quality data engine benchmarks.
+
+The data industry benefits from better benchmarks.
 
 ## Properties of good benchmarks
 
-* accessible dataset
-* list all software verions
-* list all hardware specs
-* open source benchmarking code
-* don't use any methdologies that clearly favor one engine without disclosing
+**accessible dataset**
+
+Users should be able to easily download or generate datasets to replicate the queries on their machine.
+
+**list all software verions**
+
+Make sure to list software versions for all the engines you use in addition to any other relevant information.
+
+For exmaple, you should specify that a given benchmark uses Polars v1.31.0 and uses the Polars streaming engine.
+
+TODO
+
+**list all hardware specs**
+
+TODO
+
+**open source benchmarking code**
+
+TODO
+
+**don't use any methdologies that clearly favor one engine without disclosing**
+
+TODO
 
 ## Benchmarking is hard
 

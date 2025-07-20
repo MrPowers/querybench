@@ -2,47 +2,59 @@
 
 QueryBench provides high-quality benchmarks for popular engines, so you can easily identify the best tool for your workloads.
 
-For example, here's an example of some groupby query runtimes on a 100 million row dataset with various engines:
+Here are the QueryBench single table results on the 1e8 table:
 
-![](./images/groupby-fast-1e8.png)
+![single-table-1e8](./images/single-table-1e8.svg)
 
-Here's another set of benchmarks for a different dataset and set of queries:
+## h2o benchmark results
+
+This section shows the h2o benchmarks with the QueryBench execution methodology.
+
+Here are the h2o groupby query runtimes on a 100 million row (1e8) dataset with various engines:
+
+![groupby-fast-1e8](./images/groupby-fast-1e8.svg)
+
+Here are the h2o groupby query runtimes on the 1e8 table that run slower:
+
+![groupby-slow-1e8](./images/groupby-slow-1e8.svg)
+
+Here are the h2o join query runtimes the 1e8 table that run slower:
+
+![h2o-join-1e8](./images/h2o-join-1e8.svg)
+
+## ClickBench results
+
+Here are the ClickBench results with the QueryBench methodology:
+
+![](./images/clickbench-very-fast.svg)
+
+![](./images/clickbench-fast.svg)
 
 ![](./images/clickbench-slow.svg)
 
-This is a comparison of great engines and the results are mixed!  You need to dig into the details a bit when you're selecting the best engine for your workflows.  Don't rely on overly simplistic studies that reduce benchmarks too a single graph - that's usually too simplistic for an intricate decision.
+## How to analyze the QueryBench results
+
+You can see that the benchmarks provide mixed results.
+
+You need to dig into the details a bit when you're selecting the best engine for your workflows.
+
+Don't rely on overly simplistic studies that reduce benchmarks too a single graph - that's usually too simplistic for an intricate decision.
 
 ## QueryBench project goals
 
-* Help users select fast engines for their workflows
-* Help query engine maintainers identify areas of improvement
-* Provide best practices for the data industry for building excellent benchmarks
+QueryBench is useful for different types of users:
 
-## QueryBench methodology
-
-QueryBench provides many types of benchmarks to account for tradeoffs with different engines.
-
-Here are some guiding principles:
-
-1. show the good and bad side of each engine
-1. use entirely different query types to show edge case performance (e.g. show group by aggregations on a single low cardinarly column and on many high cardinality columns)
-1. build benchmarks that are easy to reproduce
-2. benchmark total runtime, including time it takes to load into memory
-3. don't allow a single query to bias the overall results
-
-## The data industry doesn't trust benchmarks
-
-The data community is tired of VendorX publishing biased benchmarks that shows that their QueryEngineX is the best for all workflows.
-
-You've probably seen the common errors:
-
-* a study that tunes the queries for QueryEngineX and doesn't tune the other engines
-* carefully selected queries that work especially well for a certain engine
-* hardware that works best for their query engine
-* using engines far from their designed purpose, like using an engine that's built to be distributed amongst many nodes in a cluster on a single node
-* using a file format such that filesystem I/O takes more time than actually executing the query
+* Help practitioners select fast engines for their workflows
+* Allow query engine maintainers to identify areas of improvement
+* Provide benchmarking best practices for the data industry
 
 ## Why benchmarks are important
+
+Benchmarks are important for a few reasons:
+
+* You are more productive when your queries run faster
+* You save money when your queries run faster on virtual machines
+* Efficient engines can handle computationally intense queries that cause inefficient engines to error out
 
 Analyzing modern query engines and choosing the right tool for the job takes a lot of time and effort.  It's easier to determine the best options based on reliable benchmarks, determine the engine with functionality that matches your workflows, and start by trying out the best performing engine.
 
@@ -83,4 +95,18 @@ If you follow the Lakehouse architecture, you can use many engines.
 
 ## You can use many engines
 
+You don't need to only use a single engine.
 
+You can use one engine to run part of a data pipeline and then pass off the analysis to another engine to get the best-of-both-worlds.
+
+## Why the data industry is skeptical of benchmarks
+
+The data community is tired of VendorX publishing biased benchmarks that shows that their QueryEngineX is the best for all workflows.
+
+You've probably seen the common errors:
+
+* a study that tunes the queries for QueryEngineX and doesn't tune the other engines
+* carefully selected queries that work especially well for a certain engine
+* hardware that works best for their query engine
+* using engines far from their designed purpose, like using an engine that's built to be distributed amongst many nodes in a cluster on a single node
+* using a file format such that filesystem I/O takes more time than actually executing the query

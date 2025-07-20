@@ -17,4 +17,4 @@ nav:
   - Good benchmarks: good-benchmarks.md
   - Other Benchmarks:
     - h2o: other-benchmarks/h2o.md
-    - clickbench: other-benchmarks/clickbench.md
+    - ClickBench: other-benchmarks/clickbench.md
