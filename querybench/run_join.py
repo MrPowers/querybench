@@ -81,3 +81,4 @@ if num_rows:
     ax.set_ylabel('Seconds')
     ax.set_xlabel('Queries')
     ax.figure.savefig(f"images/h2o-join-{num_rows}.svg")
+    ax.figure.savefig(f"docs/images/h2o-join-{num_rows}.svg")

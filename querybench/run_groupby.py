@@ -63,6 +63,7 @@ if num_rows:
     ax.set_ylabel('Seconds')
     ax.set_xlabel('Queries')
     ax.figure.savefig(f"images/groupby-fast-{num_rows}.svg")
+    ax.figure.savefig(f"docs/images/groupby-fast-{num_rows}.svg")
 
 if num_rows:
     ax = df_slow.plot.bar(rot=0)
@@ -70,3 +71,4 @@ if num_rows:
     ax.set_ylabel('Seconds')
     ax.set_xlabel('Queries')
     ax.figure.savefig(f"images/groupby-slow-{num_rows}.svg")
+    ax.figure.savefig(f"docs/images/groupby-slow-{num_rows}.svg")

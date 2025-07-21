@@ -36,7 +36,15 @@ export clickbench=/Users/matthewpowers/data/hits.parquet
 
 ## Run scripts
 
-You can run the scrips as follows:
+You can run all the scripts as follows:
+
+```sh
+scripts/run_all.sh
+```
+
+This query takes 40 minutes to run.
+
+You can run the individual scrips as follows:
 
 ```
 uv run -m querybench.run_groupby 1e8
