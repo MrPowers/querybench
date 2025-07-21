@@ -26,7 +26,7 @@ The Clickbench benchmarks are easy to understand, cover a variety of different q
 
 **Covers lots of different engines**
 
-The Clickbench benchmarks cover many engines including Daft, Polars, TODO (add more).
+The Clickbench benchmarks cover many engines, including Daft, Polars, and TODO (add more).
 
 Some engines are missing, notably TODO.
 
@@ -38,11 +38,11 @@ XXX
 
 The Clickbench dataset can be downloaded in the project README.
 
-This is a huge improvement compared to the h2o dataset that requires running an R program, which isn't easy if you aren't familiar with the R programming language.
+This is a significant improvement compared to the h2o dataset, which requires running an R program, which can be challenging if you aren't familiar with the R programming language.
 
 **Data in Parquet files**
 
-The Clickbench dataset is distributed in different file formats, including Parquet which is great for benchmarks.  Parquet is columar which allows for column pruning, has a well-defined schema so engines don't need to infer column names or types, and is binary so storage files on disk are relatively small.
+The Clickbench dataset is distributed in different file formats, including Parquet, which is ideal for benchmarks. Parquet is columnar, allowing for column pruning, has a well-defined schema, so engines don't need to infer column names or types, and is binary, making storage files on disk relatively small.
 
 File formats like CSV can cause complications when comparing two engines.
 
@@ -50,7 +50,7 @@ File formats like CSV can cause complications when comparing two engines.
 
 The Clickbench queries include query runtimes when data is already loaded in memory and when data is on disk and not loaded yet.
 
-This gives a good representation of runtimes for databases when data is already loaded and for enterprises that run ad hoc queries for data stored on disk.
+This provides a good representation of runtimes for databases when data is already loaded, as well as for enterprises that run ad hoc queries on data stored on disk.
 
 **Different machine sizes are used**
 
@@ -58,15 +58,15 @@ XXX
 
 ## Disadvantages of the Clickbench benchmarks
 
-The Clickbench benchmarks are great, but don't test important types of queries and have many flaws.
+The Clickbench benchmarks are excellent, but don't test important types of queries and have many flaws.
 
-Let's review the limitations of Clickbench, so you can probably interpret the results.
+Let's review the limitations of Clickbench so that you can interpret the results.
 
 **No join queries**
 
-The Clickbench queries only cover single table queries and don't consider joins or compound queries with joins.
+The Clickbench queries only cover single-table queries and don't consider joins or compound queries with joins.
 
-Joins are often the biggest bottleneck for a query, so this is a big omission.
+Joins are often the biggest bottleneck for a query, so this is a significant omission.
 
 **Only one dataset size**
 
@@ -74,27 +74,27 @@ All the Clickhouse benchmarks are run on the table with XX rows.
 
 The benchmarks aren't run on datasets with different scale factors.  It'd be interesting to see the same benchmarks run on the same table with XX rows, XX rows, etc.
 
-This could stress test engines that have issues when the load stress tests the limits of the hardware for a machine.
+This could stress test engines that have issues when the load stresses the limits of the hardware for a machine.
 
-**One slow query has a large impact on results**
+**One slow query has a significant impact on results**
 
-The query times for all 42 queries is presented in total, which means that a single slow running query can greaty impact the overall result.  Stack ranking the queries based on their ranking for all the queries would be another reliable way to present the results.
+The query times for all 42 queries are presented in total, which means that a single slow-running query can greatly impact the overall result. Ranking the queries based on their ranking for all queries would be another reliable way to present the results.
 
 **Not useful for specialized query engines**
 
-Some of the query engines in Clickbench are specialized for a use case and aren't optimized general purpose engines:
+Some of the query engines in Clickbench are specialized for a use case and aren't optimized general-purpose engines:
 
-* Time is for timeseries analyses
+* Time is for time series analyses
 * XX is for OLTP
 * XX is for XX
 
-It's better to benchmark specialized query engines with specialized query patterns.  For example, a spatial query engine should be benchmarked with spatial queries and should be compared with other spatial engines.
+It's better to benchmark specialized query engines with specialized query patterns.  For example, a spatial query engine should be benchmarked using spatial queries and compared with other spatial engines.
 
 **Bad for distributed query engines**
 
-Testing distributed query well requires large datasets spread across many files and a computation cluster with several machines.
+Properly testing a distributed engine requires large datasets spread across many files and a computation cluster with several machines.
 
-The Clickbench dataset is small and the queries can easily be run on a single laptop with only 16 GB of memory.  It's way too small of a dataset to test a distributed engine.
+The Clickbench dataset is small, and the queries can be run on a single laptop with only 16 GB of memory.  It's way too small of a dataset to test a distributed engine.
 
 The Clickbench dataset could be 10 times larger and that would give an interesting 147.8 GB dataset to test a distributed engine.
 
@@ -102,22 +102,22 @@ The Clickbench dataset could be 10 times larger and that would give an interesti
 
 The first query can be computed from the Parquet metadata alone: `"SELECT COUNT(*) FROM hits;"`.
 
-The query engine can simply fetch the row count from the metadata of every row group in the file and compute the sum.
+The query engine can fetch the row count from the metadata of every row group in the file and compute the sum.
 
-It's important to verify that engines use metadata to run queries faster when possible, but it's not particularily interesting after that's been confirmed.
+It's essential to verify that engines utilize metadata to run queries faster when possible, but it's not particularly interesting after that has been confirmed.
 
 **Lots of quick queries**
 
-A large portion of the queries (around 26) can be run in under a second on a Macbook M3 with 16 GB of RAM.  
+A large portion of the queries (around 26) can be run in under a second on a MacBook M3 with 16 GB of RAM.  
 
-10 queries finish between 1 and 3 seconds.
+Ten queries finish between 1 and 3 seconds.
 
-The remaining 6 queries take more than 3 seconds to run.
+The remaining six queries take more than 3 seconds to run.
 
 The queries are skewed to lightweight workflows that can run very quickly.
 
 ## Conclusion
 
-Querybench is a great benchmarking analysis and a great contribution to the data community.
+Querybench is an excellent benchmarking analysis and a significant contribution to the data community.
 
-It's awesome that Clickhouse has open sourced the dataset and the code.  It's also amazing they maintain the benchmarks and made a nice user interface.
+It's fantastic that Clickhouse has open-sourced the dataset and the code.  It's also amazing that they maintain the benchmarks and made a nice user interface.
