@@ -1,0 +1,772 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://querybench.com/">
+      
+      
+      
+        <link rel="next" href="methodology/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
+    
+    
+      
+        <title>QueryBench</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.8c3ca2c6.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#querybench" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="QueryBench" class="md-header__button md-logo" aria-label="QueryBench" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            QueryBench
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="QueryBench" class="md-nav__button md-logo" aria-label="QueryBench" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    QueryBench
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#h2o-benchmark-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      h2o benchmark results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clickbench-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      ClickBench results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-analyze-the-querybench-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to analyze the QueryBench results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#querybench-project-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      QueryBench project goals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-benchmarks-are-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why benchmarks are important
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-best-query-engine-depends-on-many-factors" class="md-nav__link">
+    <span class="md-ellipsis">
+      The best query engine depends on many factors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-engine-speed-isnt-the-only-factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query engine speed isn't the only factor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#you-can-use-many-engines" class="md-nav__link">
+    <span class="md-ellipsis">
+      You can use many engines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-the-data-industry-is-skeptical-of-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why the data industry is skeptical of benchmarks
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="methodology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Methodology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Datasets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="queries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Queries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="good-benchmarks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Good benchmarks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Other Benchmarks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Other Benchmarks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="other-benchmarks/h2o-pros-cons/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    h2o
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="other-benchmarks/clickbench-pros-cons/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ClickBench
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#h2o-benchmark-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      h2o benchmark results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clickbench-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      ClickBench results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-analyze-the-querybench-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to analyze the QueryBench results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#querybench-project-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      QueryBench project goals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-benchmarks-are-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why benchmarks are important
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-best-query-engine-depends-on-many-factors" class="md-nav__link">
+    <span class="md-ellipsis">
+      The best query engine depends on many factors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-engine-speed-isnt-the-only-factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query engine speed isn't the only factor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#you-can-use-many-engines" class="md-nav__link">
+    <span class="md-ellipsis">
+      You can use many engines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-the-data-industry-is-skeptical-of-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why the data industry is skeptical of benchmarks
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="querybench">QueryBench</h1>
+<p>QueryBench provides high-quality benchmarks for popular engines, so you can easily identify the best tool for your workloads.</p>
+<p>Here are the QueryBench single table results on the 1e8 table:</p>
+<p><img alt="single-table-1e8" src="images/single-table-1e8.svg" /></p>
+<h2 id="h2o-benchmark-results">h2o benchmark results</h2>
+<p>This section shows the h2o benchmarks with the QueryBench execution methodology.</p>
+<p>Here are the h2o groupby query runtimes on a 100 million row (1e8) dataset with various engines:</p>
+<p><img alt="groupby-fast-1e8" src="images/groupby-fast-1e8.svg" /></p>
+<p>Here are the h2o groupby query runtimes on the 1e8 table that run slower:</p>
+<p><img alt="groupby-slow-1e8" src="images/groupby-slow-1e8.svg" /></p>
+<p>Here are the h2o join query runtimes the 1e8 table that run slower:</p>
+<p><img alt="h2o-join-1e8" src="images/h2o-join-1e8.svg" /></p>
+<h2 id="clickbench-results">ClickBench results</h2>
+<p>Here are the ClickBench results with the QueryBench methodology:</p>
+<p><img alt="" src="images/clickbench-very-fast.svg" /></p>
+<p><img alt="" src="images/clickbench-fast.svg" /></p>
+<p><img alt="" src="images/clickbench-slow.svg" /></p>
+<h2 id="how-to-analyze-the-querybench-results">How to analyze the QueryBench results</h2>
+<p>You can see that the benchmarks provide mixed results.</p>
+<p>You need to dig into the details a bit when you're selecting the best engine for your workflows.</p>
+<p>Don't rely on overly simplistic studies that reduce benchmarks too a single graph - that's usually too simplistic for an intricate decision.</p>
+<h2 id="querybench-project-goals">QueryBench project goals</h2>
+<p>QueryBench is useful for different types of users:</p>
+<ul>
+<li>Help practitioners select fast engines for their workflows</li>
+<li>Allow query engine maintainers to identify areas of improvement</li>
+<li>Provide benchmarking best practices for the data industry</li>
+</ul>
+<h2 id="why-benchmarks-are-important">Why benchmarks are important</h2>
+<p>Benchmarks are important for a few reasons:</p>
+<ul>
+<li>You are more productive when your queries run faster</li>
+<li>You save money when your queries run faster on virtual machines</li>
+<li>Efficient engines can handle computationally intense queries that cause inefficient engines to error out</li>
+</ul>
+<p>Analyzing modern query engines and choosing the right tool for the job takes a lot of time and effort.  It's easier to determine the best options based on reliable benchmarks, determine the engine with functionality that matches your workflows, and start by trying out the best performing engine.</p>
+<p>Suppose you'd like to find the quickest way to join a 2GB CSV file with a 1GB Parquet file on your local machine.</p>
+<p>You may not want to perform an exhaustive analysis yourself.  You'll probably find it easier to look up some benchmarks and make and informed decision on the best alternative.</p>
+<p>Trying out 10 different options that require figuring out how to use various different programming languages isn't realistic.  Benchmarks serve to guide users to good options for their uses cases, keeping in mind their time constraints.</p>
+<p>Benchmarks can be harmful when they're biased or improperly structured and give misleading conclusions.  Benchmarks should not intentionally or unintentionally misguide readers and towards suboptimal technology choices.</p>
+<p>Benchmarks should also pave the way for revolutionary technologies to gain adoption.  When a new query engine figures out how to process data in a faster, more reliable manner, they should be able to quantify improvements to users via benchmarks.  This helps drive adoption.</p>
+<h2 id="the-best-query-engine-depends-on-many-factors">The best query engine depends on many factors</h2>
+<p>Choosing the best engine is multifaceted, so the performance of the engine for certain queries isn't the only decision factor.</p>
+<p>Here are other important factors to consider:</p>
+<ul>
+<li>OLTP vs. OLAP query patterns</li>
+<li>ad hoc vs. consistent querying</li>
+<li>skill set and preferences of your team</li>
+</ul>
+<p>QueryBench aims to provides many types of benchmarks so you can identify the fastest engine for your team.  It strives to highlight potential biases for the different query patterns rather than hide these important details.</p>
+<h2 id="query-engine-speed-isnt-the-only-factor">Query engine speed isn't the only factor</h2>
+<p>Make sure to put these results in perspecive and remember that query engine speed is not the only important factor when selecting a query engine.</p>
+<p>Here are some other important factors:</p>
+<ul>
+<li>library ecosystem: you may want to use a specific engine that's compatible with an important library you need for an analysis</li>
+<li>team skill set: your team may only know Python, so a Java engine isn't a good option for them</li>
+<li>team preferences: your team may be passionate about the tidyverse and R programming language, so it may not be worth switching to a different ecosystem</li>
+<li>data set size: your data may be large, so you have to use a big data engine.  Or, your data may be small, so there is no reason to take on the operational complexity of running a distributed engine.</li>
+</ul>
+<p>If you follow the Lakehouse architecture, you can use many engines.</p>
+<h2 id="you-can-use-many-engines">You can use many engines</h2>
+<p>You don't need to only use a single engine.</p>
+<p>You can use one engine to run part of a data pipeline and then pass off the analysis to another engine to get the best-of-both-worlds.</p>
+<h2 id="why-the-data-industry-is-skeptical-of-benchmarks">Why the data industry is skeptical of benchmarks</h2>
+<p>The data community is tired of VendorX publishing biased benchmarks that shows that their QueryEngineX is the best for all workflows.</p>
+<p>You've probably seen the common errors:</p>
+<ul>
+<li>a study that tunes the queries for QueryEngineX and doesn't tune the other engines</li>
+<li>carefully selected queries that work especially well for a certain engine</li>
+<li>hardware that works best for their query engine</li>
+<li>using engines far from their designed purpose, like using an engine that's built to be distributed amongst many nodes in a cluster on a single node</li>
+<li>using a file format such that filesystem I/O takes more time than actually executing the query</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+        
+          
+          <a href="methodology/" class="md-footer__link md-footer__link--next" aria-label="Next: Methodology">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Methodology
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["content.action.edit", "content.code.copy", "navigation.footer", "navigation.expand", "navigation.indexes"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.525ec568.min.js"></script>
+      
+    
+  </body>
+</html>
