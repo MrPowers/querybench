@@ -1,4 +1,4 @@
-# h2o benchmarks
+# h2o benchmarks pros and cons
 
 The h2o benchmarks have certain limitations, as do all benchmarks.
 

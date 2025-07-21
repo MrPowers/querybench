@@ -8,8 +8,23 @@ This page covers the logic behind the various queries in QueryBench.
 
 TODO: Add some single table queries on the Clickhouse table
 
+## h2o
 
-## h2o groupby
+### h2o join
+
+**Note: This section assums the 1e8 dataset size**
+
+The first h2o join query runs a join operation on a large table and a small table:
+
+```sql
+SELECT x.id1, x.id2, x.id3, x.id4 as xid4, small.id4 as smallid4, x.id5, x.id6, x.v1, small.v2
+FROM x
+INNER JOIN small ON x.id1 = small.id1
+```
+
+This query returns XX rows.
+
+### h2o groupby
 
 **Note: This section assums the 1e8 dataset size**
 
@@ -38,22 +53,6 @@ Each id1 value has 100 distinct id2 values, so this query returns 10,000 results
 XXX
 
 TODO
-
-## h2o join
-
-**Note: This section assums the 1e8 dataset size**
-
-The first h2o join query runs a join operation on a large table and a small table:
-
-```sql
-SELECT x.id1, x.id2, x.id3, x.id4 as xid4, small.id4 as smallid4, x.id5, x.id6, x.v1, small.v2
-FROM x
-INNER JOIN small ON x.id1 = small.id1
-```
-
-This query returns XX rows.
-
-
 
 
 ## Clickbench

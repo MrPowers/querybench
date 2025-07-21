@@ -16,5 +16,5 @@ nav:
   - Queries: queries.md
   - Good benchmarks: good-benchmarks.md
   - Other Benchmarks:
-    - h2o: other-benchmarks/h2o.md
-    - ClickBench: other-benchmarks/clickbench.md
+    - h2o: other-benchmarks/h2o-pros-cons.md
+    - ClickBench: other-benchmarks/clickbench-pros-cons.md
