@@ -12,6 +12,12 @@ Most readers of this repo are interested in the benchmarking results and don't a
 
 This repo provides clear instructions on how to generate the datasets and descriptions of the results, so you can easily gain intuition about the actual benchmarks that are run.
 
+## TPC H on localhost
+
+![tpch-sf50](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/tpch-sf50.svg.svg)
+
+* Note these are TPC derivative and don't follow the official TPC methodology.
+
 ## h2o join on localhost
 
 Here are the results for the h2o join queries on the 1e7 dataset:
