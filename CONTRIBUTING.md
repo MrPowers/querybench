@@ -32,6 +32,7 @@ export J1_1e8_1e5=/Users/matthewpowers/data/J1_1e8_1e5_0_0.parquet
 export J1_1e8_1e8=/Users/matthewpowers/data/J1_1e8_1e8_0_0.parquet
 export J1_1e8_NA=/Users/matthewpowers/data/J1_1e8_NA_0_0.parquet
 export clickbench=/Users/matthewpowers/data/hits.parquet
+export DATADIR=/Users/matthewpowers/data/
 ```
 
 ## Run scripts
