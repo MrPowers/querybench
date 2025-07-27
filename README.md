@@ -14,9 +14,11 @@ This repo provides clear instructions on how to generate the datasets and descri
 
 ## TPC H on localhost
 
-![tpch-sf50](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/tpch-sf50.svg.svg)
+Here are the TPC H queries for scale factor 50:
 
-* Note these are TPC derivative and don't follow the official TPC methodology.
+![tpch-sf50](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/tpch-sf50.svg)
+
+*Note these are TPC derivative and don't follow the official TPC methodology.*
 
 ## h2o join on localhost
 

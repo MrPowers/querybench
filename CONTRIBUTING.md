@@ -2,6 +2,8 @@
 
 ## Generating datasets
 
+### h20
+
 Use [falsa](https://github.com/mrpowers-io/falsa) to generate the dataset.
 
 You can use this command: `falsa groupby --path-prefix=~/data --size SMALL --data-format PARQUET`.
@@ -13,6 +15,17 @@ Here are the different scale factors:
 * Small dataset has 10 million rows (1e7) and runs quite fast
 * Medium dataset has 100 million rows (1e8) and runs slower
 * Large dataset has 1 billion rows (1e9) and often causes memory errors - it's a good way to stress test query engines on a single machine.
+
+### TPC-H data
+
+Use [tpcgen-rs](https://github.com/clflushopt/tpchgen-rs).
+
+```
+tpchgen-cli -s 1 --output-dir tpch_sf1 --format=parquet
+tpchgen-cli -s 5 --output-dir tpch_sf5 --format=parquet
+tpchgen-cli -s 10 --output-dir tpch_sf10 --format=parquet
+...
+```
 
 ## Set environment variables
 
@@ -47,6 +60,8 @@ This query takes 40 minutes to run.
 
 You can run the individual scrips as follows:
 
+**h2o**
+
 ```
 uv run -m querybench.run_groupby 1e8
 ```
@@ -55,9 +70,19 @@ uv run -m querybench.run_groupby 1e8
 uv run -m querybench.run_join 1e7
 ```
 
+**TPC-H**
+
+```
+uv run -m querybench.run_tpch $DATADIR 60
+```
+
+**QueryBench**
+
 ```
 uv run -m querybench.run_single_table 1e7
 ```
+
+**ClickBench**
 
 ```
 uv run -m querybench.run_clickbench $clickbench
