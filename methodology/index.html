@@ -270,7 +270,7 @@
         <li class="md-nav__item">
   <a href="#in-memory-queries-vs-cold-queries" class="md-nav__link">
     <span class="md-ellipsis">
-      In memory queries vs. cold queries
+      In-memory queries vs. cold queries
     </span>
   </a>
   
@@ -528,7 +528,7 @@
         <li class="md-nav__item">
   <a href="#in-memory-queries-vs-cold-queries" class="md-nav__link">
     <span class="md-ellipsis">
-      In memory queries vs. cold queries
+      In-memory queries vs. cold queries
     </span>
   </a>
   
@@ -604,18 +604,18 @@
 
 
 <h1 id="querybench-methodology">QueryBench Methodology</h1>
-<p>QueryBench provides many types of benchmarks to account for tradeoffs with different engines.</p>
+<p>QueryBench offers various benchmarks to account for trade-offs with different engines.</p>
 <p>Here are some guiding principles:</p>
 <ol>
-<li>show the good and bad side of each engine</li>
-<li>use entirely different query types to show edge case performance (e.g. show group by aggregations on a single low cardinarly column and on many high cardinality columns)</li>
-<li>build benchmarks that are easy to reproduce</li>
-<li>benchmark total runtime, including time it takes to load into memory</li>
-<li>don't allow a single query to bias the overall results</li>
+<li>Show the good and bad sides of each engine</li>
+<li>Use entirely different query types to show edge case performance (e.g., show group by aggregations on a single low cardinality column and many high cardinality columns)</li>
+<li>Build benchmarks that are easy to reproduce</li>
+<li>Benchmark total runtime, including the time it takes to load into memory</li>
+<li>Don't allow a single query to bias the overall results</li>
 </ol>
-<p>QueryBench uses benchmarking methdology that's fair for all engines.</p>
-<p>The queries are designed to highlight the strenghts and weaknesses of engines.</p>
-<p>The methodology is designed to level-out obvious biases found in other benchmarks.  Let's start by looking at some of the queries.</p>
+<p>QueryBench uses a benchmarking methodology that's fair for all engines.</p>
+<p>The queries are designed to highlight the strengths and weaknesses of engines.</p>
+<p>The methodology is designed to level out obvious biases found in other benchmarks.  Let's begin by examining some of the queries.</p>
 <h2 id="query-selection">Query selection</h2>
 <p>It's good to stress test a query engine with different types of queries:</p>
 <ul>
@@ -625,62 +625,62 @@
 <li>sorting operations on low and high cardinality columns</li>
 <li>compound queries with many operations like a join, then a filter, then a sort</li>
 </ul>
-<p>You ideally want to select a representative basket of queries.  This is a great way to expose opportunities for optimizations in engines:</p>
+<p>You should select a representative basket of queries.  This is a great way to expose opportunities for optimizations in engines:</p>
 <ul>
-<li>one engine may need to get better when running group by queries on lots of columns</li>
-<li>another engine may struggle when joining two large engines</li>
-<li>a third engine may need a better optimizer for compound queries</li>
+<li>One engine may need to get better when running group-by queries on lots of columns</li>
+<li>Another engine may struggle when joining two large engines</li>
+<li>A third engine may need a better optimizer for compound queries</li>
 </ul>
-<p>The DataFusion community has successfully used this iterative process to make their engine even faster!</p>
-<h2 id="in-memory-queries-vs-cold-queries">In memory queries vs. cold queries</h2>
+<p>The DataFusion community has successfully utilized this iterative process to enhance the speed of their engine further.</p>
+<h2 id="in-memory-queries-vs-cold-queries">In-memory queries vs. cold queries</h2>
 <p>There are two different ways to run queries:</p>
 <ul>
 <li>in-memory: load all the data into memory and then quantify the runtime after the data is already loaded</li>
 <li>cold queries: the query runtime to load data from disk and execute the query</li>
 </ul>
 <p>Either methodology can be a better representation of your query pattern, depending on how you analyze data.  If you have data loaded in a data warehouse and run queries, then in-memory queries are more representative.  If you store data in cloud storage and run ad hoc queries, then cold queries are more representative.</p>
-<p>It's best to present the runtimes for both types of queries to give the most accurate reprensetaion of runtimes.</p>
+<p>It's best to present the runtimes for both types of queries to give the most accurate representation of runtimes.</p>
 <h2 id="dataset-sizes">Dataset sizes</h2>
-<p>It's good to show query runtimes for different scale factors to show how engines perform under different loads.  Here are good dataset sizes:</p>
+<p>It's beneficial to display query runtimes for various scale factors to illustrate how engines perform under different loads.  Here are good dataset sizes:</p>
 <ul>
 <li>tiny tables</li>
-<li>medium size tables that easily fit into memory</li>
-<li>large tables that can't fit into memory and really challenge the engine</li>
+<li>medium-sized tables that easily fit into memory</li>
+<li>large tables that can't fit into memory and challenge the engine</li>
 <li>larger than memory datasets to see if an engine can handle out-of-memory engines</li>
 </ul>
 <p>Distributed engines should be benchmarked with large dataset sizes that can't fit on a single machine.</p>
-<p>Some other benchmarking studies only use small scale factors on a single machine for distributed machines that are meant to be run on huge tables, which is misleading.</p>
-<p>Make sure you use table sizes that make sense for your hardware specs and query engine.</p>
+<p>Some other benchmarking studies only use small-scale factors on a single machine for distributed machines that are meant to be run on huge tables, which is misleading.</p>
+<p>Ensure you use table sizes that align with your hardware specifications and query engine.</p>
 <h2 id="file-formats">File formats</h2>
 <p>Benchmarks can be built with different file formats:</p>
 <ul>
 <li>Row-based formats like CSV, JSON, or Avro</li>
 <li>Columnar file formats like Parquet and ORC</li>
 </ul>
-<p>Some benchmarks use row-based formats which can force columns unrelated to the query to needlessly be loaded into memory.  These benchmarks can end up spending more time testing an engine's CSV reader more than the query execution capabilities.</p>
-<p>It's generally better to use columnar file formats like Parquet to better measure an engine's query execution capabilities.</p>
+<p>Some benchmarks use row-based formats, which can force columns unrelated to the query to be needlessly loaded into memory.  These benchmarks can end up spending more time testing an engine's CSV reader than the query execution capabilities.</p>
+<p>It's generally better to use columnar file formats, such as Parquet, to more accurately measure an engine's query execution capabilities.</p>
 <h2 id="lazy-vs-eager-computations">Lazy vs. eager computations</h2>
-<p>Some engines execute queries eagerly whereas other lazy engines defer computations till the last possible moment when the user needs results.</p>
-<p>pandas is an eager engine and DataFusion is a lazy engine for example.</p>
-<p>You need to make sure to execute all the queries with the engines for apples;apples comparisons of the engines.</p>
+<p>Some engines execute queries eagerly, whereas others execute computations lazily, deferring them until the last possible moment when the user needs the results.</p>
+<p>Pandas is an eager engine, and DataFusion is a lazy engine, for example.</p>
+<p>Please ensure that you fully execute queries with every engine for a fair comparison.</p>
 <h2 id="single-node-vs-distributed-compute-engines">Single node vs. distributed compute engines</h2>
-<p>Some engines are designed to be run on a single machine and others are distributed engines meant to be run on a cluster.</p>
-<p>Comparing single machine engines and distributed engines is somewhat pointless:</p>
+<p>Some engines are designed to run on a single machine, while others are distributed engines intended to run on a cluster.</p>
+<p>Comparing single-machine engines and distributed engines is somewhat pointless:</p>
 <ul>
-<li>distributed engines have lots of overhead and will obviously run slower than single machine engines on a small dataset</li>
-<li>single machine engines will obviously error out for huge datasets that require a cluster</li>
+<li>Distributed engines have lots of overhead and will run slower than single-machine engines on a small dataset</li>
+<li>Single-machine engines will error out for massive datasets that require a cluster</li>
 </ul>
-<p>It may be cool to run some distributed engine queries on a single machine, perhaps if you're curious about how your Apache Spark test suite will run locally.</p>
+<p>It may be interesting to run some distributed engine queries on a single machine if you're curious about how your Apache Spark test suite performs locally.</p>
 <p>But don't make the mistake of extrapolating Apache Spark vs. pandas benchmarks on a small dataset on a single machine to other dataset sizes.</p>
 <h2 id="using-the-same-methodology-for-all-engines">Using the same methodology for all engines</h2>
-<p>Query engines/databases/data warehouses are used and architected quite differently, so they clearly need different benchmarking methodologies.</p>
-<p>If your data warehouse always has data loaded in memory, then you can just benchmark the hot queries.</p>
+<p>Query engines/databases/data warehouses are used and architected quite differently, so they need different benchmarking methodologies.</p>
+<p>If your data warehouse always has data loaded in memory, then you can benchmark the hot queries.</p>
 <p>If you only run ad hoc queries for data in cloud storage, then cold run queries are the most useful.</p>
-<p>QueryBench aims to display the methodolgy that's most reliable for the different types of query engines.</p>
+<p>QueryBench aims to display the methodology that's most reliable for the different types of query engines.</p>
 <h2 id="olap-vs-oltp-engines">OLAP vs. OLTP engines</h2>
 <p>An engine that's optimized for OLAP queries typically cannot perform OLTP queries as quickly.</p>
-<p>A set of queries that simply shows an OLAP engine can perform OLAP queries faster then a OLTP engine isn't particularily interesting.</p>
-<p>It's better to show how one engine can perform the OLAP queries faster, but the other excels at OLTP workflows.</p>
+<p>A set of queries that shows an OLAP engine can perform OLAP queries faster than an OLTP engine isn't exciting.</p>
+<p>It's better to demonstrate how one engine can perform OLAP queries faster, while the other excels at OLTP workflows.</p>
 
 
 

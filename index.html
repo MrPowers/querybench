@@ -255,6 +255,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tpc-h-benchmark-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      TPC H benchmark results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-analyze-the-querybench-results" class="md-nav__link">
     <span class="md-ellipsis">
       How to analyze the QueryBench results
@@ -542,6 +551,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tpc-h-benchmark-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      TPC H benchmark results
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-analyze-the-querybench-results" class="md-nav__link">
     <span class="md-ellipsis">
       How to analyze the QueryBench results
@@ -629,65 +647,75 @@
 <p><img alt="groupby-fast-1e8" src="images/groupby-fast-1e8.svg" /></p>
 <p>Here are the h2o groupby query runtimes on the 1e8 table that run slower:</p>
 <p><img alt="groupby-slow-1e8" src="images/groupby-slow-1e8.svg" /></p>
-<p>Here are the h2o join query runtimes the 1e8 table that run slower:</p>
+<p>Here are the h2o join query runtimes for the 1e8 table that run slower:</p>
 <p><img alt="h2o-join-1e8" src="images/h2o-join-1e8.svg" /></p>
 <h2 id="clickbench-results">ClickBench results</h2>
 <p>Here are the ClickBench results with the QueryBench methodology:</p>
 <p><img alt="" src="images/clickbench-very-fast.svg" /></p>
 <p><img alt="" src="images/clickbench-fast.svg" /></p>
 <p><img alt="" src="images/clickbench-slow.svg" /></p>
+<h2 id="tpc-h-benchmark-results">TPC H benchmark results</h2>
+<p>Here are the TPC H query results for various scale factors.</p>
+<p><img alt="" src="images/tpch-sf1.svg" /></p>
+<p><img alt="" src="images/tpch-sf5.svg" /></p>
+<p><img alt="" src="images/tpch-sf10.svg" /></p>
+<p><img alt="" src="images/tpch-sf20.svg" /></p>
+<p><img alt="" src="images/tpch-sf50.svg" /></p>
+<p><img alt="" src="images/tpch-sf80.svg" /></p>
+<p><img alt="" src="images/tpch-sf100.svg" /></p>
+<p><img alt="" src="images/tpch-sf120.svg" /></p>
 <h2 id="how-to-analyze-the-querybench-results">How to analyze the QueryBench results</h2>
 <p>You can see that the benchmarks provide mixed results.</p>
 <p>You need to dig into the details a bit when you're selecting the best engine for your workflows.</p>
-<p>Don't rely on overly simplistic studies that reduce benchmarks too a single graph - that's usually too simplistic for an intricate decision.</p>
+<p>Don't rely on overly simplistic studies that reduce benchmarks to a single graph - that's usually too simplistic for an intricate decision.</p>
 <h2 id="querybench-project-goals">QueryBench project goals</h2>
-<p>QueryBench is useful for different types of users:</p>
+<p>QueryBench is helpful for different types of users:</p>
 <ul>
 <li>Help practitioners select fast engines for their workflows</li>
 <li>Allow query engine maintainers to identify areas of improvement</li>
 <li>Provide benchmarking best practices for the data industry</li>
 </ul>
 <h2 id="why-benchmarks-are-important">Why benchmarks are important</h2>
-<p>Benchmarks are important for a few reasons:</p>
+<p>Benchmarks are essential for a few reasons:</p>
 <ul>
 <li>You are more productive when your queries run faster</li>
 <li>You save money when your queries run faster on virtual machines</li>
 <li>Efficient engines can handle computationally intense queries that cause inefficient engines to error out</li>
 </ul>
-<p>Analyzing modern query engines and choosing the right tool for the job takes a lot of time and effort.  It's easier to determine the best options based on reliable benchmarks, determine the engine with functionality that matches your workflows, and start by trying out the best performing engine.</p>
-<p>Suppose you'd like to find the quickest way to join a 2GB CSV file with a 1GB Parquet file on your local machine.</p>
-<p>You may not want to perform an exhaustive analysis yourself.  You'll probably find it easier to look up some benchmarks and make and informed decision on the best alternative.</p>
-<p>Trying out 10 different options that require figuring out how to use various different programming languages isn't realistic.  Benchmarks serve to guide users to good options for their uses cases, keeping in mind their time constraints.</p>
-<p>Benchmarks can be harmful when they're biased or improperly structured and give misleading conclusions.  Benchmarks should not intentionally or unintentionally misguide readers and towards suboptimal technology choices.</p>
-<p>Benchmarks should also pave the way for revolutionary technologies to gain adoption.  When a new query engine figures out how to process data in a faster, more reliable manner, they should be able to quantify improvements to users via benchmarks.  This helps drive adoption.</p>
+<p>Analyzing modern query engines and selecting the right tool for the job requires considerable time and effort.  It's easier to determine the best options based on reliable benchmarks, determine the engine with functionality that matches your workflows, and start by trying out the best-performing engine.</p>
+<p>Suppose you'd like to find the quickest way to join a 2 GB CSV file with a 1 GB Parquet file on your local machine.</p>
+<p>You may not want to perform an exhaustive analysis yourself.  You'll find it easier to look up some benchmarks and make an informed decision on the best alternative.</p>
+<p>Trying out 10 different options that require figuring out how to use various programming languages isn't realistic.  Benchmarks serve to guide users to informed choices for their use cases, taking into account their time constraints.</p>
+<p>Benchmarks can be harmful when they're biased or improperly structured, yielding misleading conclusions.  Benchmarks should not intentionally or unintentionally mislead readers into making suboptimal technology choices.</p>
+<p>Benchmarks should also pave the way for revolutionary technologies to gain adoption.  When a new query engine determines how to process data more efficiently and reliably, it should be able to quantify these improvements to users through benchmarks.  This helps drive adoption.</p>
 <h2 id="the-best-query-engine-depends-on-many-factors">The best query engine depends on many factors</h2>
-<p>Choosing the best engine is multifaceted, so the performance of the engine for certain queries isn't the only decision factor.</p>
-<p>Here are other important factors to consider:</p>
+<p>Choosing the best engine is multifaceted, so the performance of the engine for specific queries isn't the only decision factor.</p>
+<p>Here are other essential factors to consider:</p>
 <ul>
 <li>OLTP vs. OLAP query patterns</li>
 <li>ad hoc vs. consistent querying</li>
 <li>skill set and preferences of your team</li>
 </ul>
-<p>QueryBench aims to provides many types of benchmarks so you can identify the fastest engine for your team.  It strives to highlight potential biases for the different query patterns rather than hide these important details.</p>
+<p>QueryBench aims to provide a variety of benchmarks, enabling you to identify the fastest engine for your team.  It strives to highlight potential biases associated with different query patterns rather than hiding these essential details.</p>
 <h2 id="query-engine-speed-isnt-the-only-factor">Query engine speed isn't the only factor</h2>
-<p>Make sure to put these results in perspecive and remember that query engine speed is not the only important factor when selecting a query engine.</p>
-<p>Here are some other important factors:</p>
+<p>Please make sure that you put these results into perspective and remember that query engine speed is not the only important factor when selecting a query engine.</p>
+<p>Here are some other essential factors:</p>
 <ul>
-<li>library ecosystem: you may want to use a specific engine that's compatible with an important library you need for an analysis</li>
+<li>library ecosystem: you may want to use a specific engine that's compatible with a vital library you need for an analysis</li>
 <li>team skill set: your team may only know Python, so a Java engine isn't a good option for them</li>
 <li>team preferences: your team may be passionate about the tidyverse and R programming language, so it may not be worth switching to a different ecosystem</li>
-<li>data set size: your data may be large, so you have to use a big data engine.  Or, your data may be small, so there is no reason to take on the operational complexity of running a distributed engine.</li>
+<li>data set size: your data may be large, so you have to use a big data engine.  Alternatively, if your data is small, there is no need to worry about running a distributed engine.</li>
 </ul>
 <p>If you follow the Lakehouse architecture, you can use many engines.</p>
 <h2 id="you-can-use-many-engines">You can use many engines</h2>
-<p>You don't need to only use a single engine.</p>
-<p>You can use one engine to run part of a data pipeline and then pass off the analysis to another engine to get the best-of-both-worlds.</p>
+<p>You don't need to use only a single engine.</p>
+<p>You can use one engine to run part of a data pipeline and then pass off the analysis to another engine to get the best of both worlds.</p>
 <h2 id="why-the-data-industry-is-skeptical-of-benchmarks">Why the data industry is skeptical of benchmarks</h2>
-<p>The data community is tired of VendorX publishing biased benchmarks that shows that their QueryEngineX is the best for all workflows.</p>
+<p>The data community is tired of VendorX publishing biased benchmarks that show that their QueryEngineX is the best for all workflows.</p>
 <p>You've probably seen the common errors:</p>
 <ul>
 <li>a study that tunes the queries for QueryEngineX and doesn't tune the other engines</li>
-<li>carefully selected queries that work especially well for a certain engine</li>
+<li>carefully selected queries that work exceptionally well for a specific engine</li>
 <li>hardware that works best for their query engine</li>
 <li>using engines far from their designed purpose, like using an engine that's built to be distributed amongst many nodes in a cluster on a single node</li>
 <li>using a file format such that filesystem I/O takes more time than actually executing the query</li>
