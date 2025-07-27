@@ -32,6 +32,26 @@ Here are the ClickBench results with the QueryBench methodology:
 
 ![](./images/clickbench-slow.svg)
 
+## TPC H benchmark results
+
+Here are the TPC H query results for various scale factors.
+
+![](./images/tpch-sf1.svg)
+
+![](./images/tpch-sf5.svg)
+
+![](./images/tpch-sf10.svg)
+
+![](./images/tpch-sf20.svg)
+
+![](./images/tpch-sf50.svg)
+
+![](./images/tpch-sf80.svg)
+
+![](./images/tpch-sf100.svg)
+
+![](./images/tpch-sf120.svg)
+
 ## How to analyze the QueryBench results
 
 You can see that the benchmarks provide mixed results.
