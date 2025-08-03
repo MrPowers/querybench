@@ -3,49 +3,17 @@ import duckdb
 import re
 import querybench
 
-# def replace_sql_with_parquet_paths(sql: str, paths) -> str:
-#     """
-#     Replace hardcoded TPC-H table names with DuckDB read_parquet() calls.
-#     """
-#     customer, lineitem, nation, orders, part, partsupp, region, supplier = paths
-#     table_paths = {
-#         'customer': '/data/customer.parquet',
-#         'lineitem': '/data/lineitem.parquet',
-#         'partsupp': '/data/partsupp.parquet',
-#         'nation': '/data/nation.parquet',
-#         'region': '/data/region.parquet',
-
-#         # 'customer': f"read_parquet('{customer}')",
-#         # 'lineitem': f"read_parquet('{lineitem}')",
-#         # 'nation': f"read_parquet('{nation}')",
-#         # 'orders': f"read_parquet('{orders}')",
-#         # 'part': f"read_parquet('{part}')",
-#         # 'partsupp': f"read_parquet('{partsupp}')",
-#         # 'region': f"read_parquet('{region}')",
-#         # 'supplier': f"read_parquet('{supplier}')",
-#     }
-
-#     pattern = re.compile(r'\b(' + '|'.join(table_paths.keys()) + r')\b')
-
-#     def replacer(match):
-#         table = match.group(0)
-#         return f"read_parquet('{table_paths[table]}')"
-
-#     return pattern.sub(replacer, sql)
-
 
 def replace_sql_with_parquet_paths(sql: str, paths) -> str:
     customer, lineitem, nation, orders, part, partsupp, region, supplier = paths
-
-    sql = re.sub(r'\bcustomer\b',   f"read_parquet('{customer}')", sql)
-    sql = re.sub(r'\blineitem\b',   f"read_parquet('{lineitem}')", sql)
-    sql = re.sub(r'\bnation\b',     f"read_parquet('{nation}')", sql)
-    sql = re.sub(r'\borders\b',     f"read_parquet('{orders}')", sql)
-    sql = re.sub(r'\bpart\b',       f"read_parquet('{part}')", sql)
-    sql = re.sub(r'\bpartsupp\b',   f"read_parquet('{partsupp}')", sql)
-    sql = re.sub(r'\bregion\b',     f"read_parquet('{region}')", sql)
-    sql = re.sub(r'\bsupplier\b',   f"read_parquet('{supplier}')", sql)
-
+    sql = re.sub(r'\bcustomer\b', f"read_parquet('{customer}')", sql)
+    sql = re.sub(r'\blineitem\b', f"read_parquet('{lineitem}')", sql)
+    sql = re.sub(r'\bnation\b', f"read_parquet('{nation}')", sql)
+    sql = re.sub(r'\borders\b', f"read_parquet('{orders}')", sql)
+    sql = re.sub(r'\bpart\b', f"read_parquet('{part}')", sql)
+    sql = re.sub(r'\bpartsupp\b', f"read_parquet('{partsupp}')", sql)
+    sql = re.sub(r'\bregion\b', f"read_parquet('{region}')", sql)
+    sql = re.sub(r'\bsupplier\b', f"read_parquet('{supplier}')", sql)
     return sql
 
 
@@ -56,21 +24,25 @@ def q1(paths):
 
 def q2(paths):
     sql = replace_sql_with_parquet_paths(querybench.queries.tpch.q2(), paths)
+    print(sql)
     return duckdb.sql(sql).df()
 
 
 def q3(paths):
     sql = replace_sql_with_parquet_paths(querybench.queries.tpch.q3(), paths)
+    print(sql)
     return duckdb.sql(sql).df()
 
 
 def q4(paths):
     sql = replace_sql_with_parquet_paths(querybench.queries.tpch.q4(), paths)
+    print(sql)
     return duckdb.sql(sql).df()
 
 
 def q5(paths):
     sql = replace_sql_with_parquet_paths(querybench.queries.tpch.q5(), paths)
+    print(sql)
     return duckdb.sql(sql).df()
 
 

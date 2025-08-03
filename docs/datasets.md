@@ -123,11 +123,10 @@ shape: (100_000_000, 7)
 └─────┴───────┴──────────┴───────┴─────────┴────────────┴───────────┘
 ```
 Schema({'id1': Int64, 'id2': Int64, 'id3': Int64, 'id4': String, 'id5': String, 'id6': String, 'v2': Float64})
-```
 
 ### h2o join tables
 
-The h2o join tables are ...
+The h2o join tables are TODO
 
 ## ClickBench
 
@@ -136,3 +135,190 @@ TODO
 ## Polars Decision Support PDS-H
 
 TODO
+
+## TPC-H
+
+This section summarizes the TPC-H scale factor 50 tables.  Here are the tables and the sizes of the Parquet files:
+
+* `customer.parquet`: 672 MB
+* `lineitem.parquet`: 13.4 GB
+* `nation.parquet`: 3 KB
+* `orders.parquet`: 3.5 GB
+* `part.parquet`: 343 MB
+* `partsupp.parquet`: 2.2 GB
+* `region.parquet`: 1 KB
+* `supplier.parquet`: 43 MB
+
+**customer**
+
+* 7,500,000 rows
+* 8 columns
+
+```sql
+select c_custkey, c_address, c_acctbal
+from read_parquet('customer.parquet')
+limit 3;
+```
+
+```
+┌───────────┬────────────────────────────────┬───────────────┐
+│ c_custkey │           c_address            │   c_acctbal   │
+│   int64   │            varchar             │ decimal(15,2) │
+├───────────┼────────────────────────────────┼───────────────┤
+│         1 │ IVhzIApeRb ot,c,E              │        711.56 │
+│         2 │ XSTf4,NCwDVaWNe6tEgvwfmRchLXak │        121.65 │
+│         3 │ MG9kdTD2WBHm                   │       7498.12 │
+└───────────┴────────────────────────────────┴───────────────┘
+```
+
+**lineitem**
+
+* 300,005,811 rows
+* 16 columns
+
+```sql
+select l_orderkey, l_receiptdate, l_shipinstruct
+from read_parquet('lineitem.parquet')
+limit 3;
+```
+
+```
+┌────────────┬───────────────┬───────────────────┐
+│ l_orderkey │ l_receiptdate │  l_shipinstruct   │
+│   int64    │     date      │      varchar      │
+├────────────┼───────────────┼───────────────────┤
+│          1 │ 1996-03-22    │ DELIVER IN PERSON │
+│          1 │ 1996-04-20    │ TAKE BACK RETURN  │
+│          1 │ 1996-01-31    │ TAKE BACK RETURN  │
+└────────────┴───────────────┴───────────────────┘
+```
+
+**nation**
+
+* 25 rows
+* 4 columns
+
+```sql
+select n_nationkey, n_name, n_regionkey
+from read_parquet('nation.parquet')
+limit 3;
+```
+
+```
+┌─────────────┬───────────┬─────────────┐
+│ n_nationkey │  n_name   │ n_regionkey │
+│    int64    │  varchar  │    int64    │
+├─────────────┼───────────┼─────────────┤
+│           0 │ ALGERIA   │           0 │
+│           1 │ ARGENTINA │           1 │
+│           2 │ BRAZIL    │           1 │
+└─────────────┴───────────┴─────────────┘
+```
+
+**orders**
+
+* 75,000,000 rows
+* 9 columns
+
+```sql
+select o_orderkey, o_custkey, o_comment
+from read_parquet('orders.parquet')
+limit 3;
+```
+
+```
+┌────────────┬───────────┬───────────────────────────────────────────────────────────────────────────┐
+│ o_orderkey │ o_custkey │                                 o_comment                                 │
+│   int64    │   int64   │                                  varchar                                  │
+├────────────┼───────────┼───────────────────────────────────────────────────────────────────────────┤
+│          1 │   1845001 │ nstructions sleep furiously among                                         │
+│          2 │   3900082 │  foxes. pending accounts at the pending, silent asymptot                  │
+│          3 │   6165697 │ sly final accounts boost. carefully regular ideas cajole carefully. depos │
+└────────────┴───────────┴───────────────────────────────────────────────────────────────────────────┘
+```
+
+**part**
+
+* 10,000,000 rows
+* 9 columns
+
+```sql
+select p_partkey, p_name, p_retailprice
+from read_parquet('part.parquet')
+limit 3;
+```
+
+```
+┌───────────┬──────────────────────────────────────────┬───────────────┐
+│ p_partkey │                  p_name                  │ p_retailprice │
+│   int64   │                 varchar                  │ decimal(15,2) │
+├───────────┼──────────────────────────────────────────┼───────────────┤
+│         1 │ goldenrod lavender spring chocolate lace │        901.00 │
+│         2 │ blush thistle blue yellow saddle         │        902.00 │
+│         3 │ spring green yellow purple cornsilk      │        903.00 │
+└───────────┴──────────────────────────────────────────┴───────────────┘
+```
+
+**partsupp**
+
+* 40,000,000 rows
+* 5 columns
+
+```sql
+select ps_partkey, ps_suppkey, ps_supplycost
+from read_parquet('partsupp.parquet')
+limit 3;
+```
+
+```
+┌────────────┬────────────┬───────────────┐
+│ ps_partkey │ ps_suppkey │ ps_supplycost │
+│   int64    │   int64    │ decimal(15,2) │
+├────────────┼────────────┼───────────────┤
+│          1 │          2 │        771.64 │
+│          1 │     125002 │        993.49 │
+│          1 │     250002 │        337.09 │
+└────────────┴────────────┴───────────────┘
+```
+
+**region**
+
+* 5 rows
+* 3 columns
+
+```sql
+select r_regionkey, r_name from read_parquet('region.parquet');
+```
+
+```
+┌─────────────┬─────────────┐
+│ r_regionkey │   r_name    │
+│    int64    │   varchar   │
+├─────────────┼─────────────┤
+│           0 │ AFRICA      │
+│           1 │ AMERICA     │
+│           2 │ ASIA        │
+│           3 │ EUROPE      │
+│           4 │ MIDDLE EAST │
+└─────────────┴─────────────┘
+```
+
+**supplier**
+
+* 500,000 rows
+* 7 columns
+
+```sql
+select s_suppkey, s_address, s_phone from read_parquet('supplier.parquet') limit 3;
+```
+
+```
+┌───────────┬─────────────────────────────────────┬─────────────────┐
+│ s_suppkey │              s_address              │     s_phone     │
+│   int64   │               varchar               │     varchar     │
+├───────────┼─────────────────────────────────────┼─────────────────┤
+│         1 │  N kD4on9OM Ipw3,gf0JBoQDd7tgrzrddZ │ 27-918-335-1736 │
+│         2 │ 89eJ5ksX3ImxJQBvxObC,               │ 15-679-861-2259 │
+│         3 │ q1,G3Pj6OjIuUYfUoH18BFTKP5aU9bEV3   │ 11-383-516-1199 │
+└───────────┴─────────────────────────────────────┴─────────────────┘
+```

@@ -73,7 +73,7 @@ uv run -m querybench.run_join 1e7
 **TPC-H**
 
 ```
-uv run -m querybench.run_tpch $DATADIR 60
+    uv run -m querybench.run_tpch $DATADIR 60
 ```
 
 **QueryBench**
