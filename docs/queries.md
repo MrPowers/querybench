@@ -64,6 +64,26 @@ Here are the results of the TPC-H queries on scale factor 50.
 
 **query 1**
 
+This query provides a report of sales and shipping activity for line items that were shipped before October 24, 1998 (68 days before December 1, 1998). The goal is to help the business understand order volumes, pricing, discounts, and charges, grouped by how items were returned and their shipping status.
+
+The results are grouped by two categorical columns:
+
+* `l_returnflag`: Indicates whether the item was returned ('R', 'A', etc.).
+* `l_linestatus`: Represents the shipping status ('F' for filled, 'O' for open, etc.).
+
+For each group, it computes:
+
+* `sum_qty`: Total quantity of items ordered.
+* `sum_base_price`: Total base (non-discounted) price.
+* `sum_disc_price`: Total revenue after discount.
+* `sum_charge`: Total revenue after discount and tax.
+* `avg_qty`: Average quantity per line.
+* `avg_price`: Average base price per line.
+* `avg_disc`: Average discount applied.
+* `count_order`: Total number of line items.
+
+Here's the query:
+
 ```sql
 select
       l_returnflag,
