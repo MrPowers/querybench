@@ -138,16 +138,32 @@ TODO
 
 ## TPC-H
 
+The TPC-H tables have various scale factors.  Scale factor 1 contains roughly 1 GB of raw data and scale factor 50 contains around 50 GB of raw data.  Here's the row count for the different table and different scale factors:
+
+| Table       | Row Count (SF1) | Row Count (SF50) |
+|-------------|-----------------|------------------|
+| `customer`  | 150,000         | 7,500,000        |
+| `lineitem`  | 6,001,215       | 300,060,750      |
+| `nation`    | 25              | 25               |
+| `orders`    | 1,500,000       | 75,000,000       |
+| `part`      | 200,000         | 10,000,000       |
+| `partsupp`  | 800,000         | 40,000,000       |
+| `region`    | 5               | 5                |
+| `supplier`  | 10,000          | 500,000          |
+
+
 This section summarizes the TPC-H scale factor 50 tables.  Here are the tables and the sizes of the Parquet files:
 
-* `customer.parquet`: 672 MB
-* `lineitem.parquet`: 13.4 GB
-* `nation.parquet`: 3 KB
-* `orders.parquet`: 3.5 GB
-* `part.parquet`: 343 MB
-* `partsupp.parquet`: 2.2 GB
-* `region.parquet`: 1 KB
-* `supplier.parquet`: 43 MB
+| Table            | File Size (SF1) | File Size (SF50) |
+|------------------|-----------------|------------------|
+| customer.parquet  |       13.6 MB          | 672 MB           |
+| lineitem.parquet  |          231 MB       | 13.4 GB          |
+| nation.parquet    |          3 KB       | 3 KB             |
+| orders.parquet    |           63 MB      | 3.5 GB           |
+| part.parquet      |          7 MB       | 343 MB           |
+| partsupp.parquet  |             42 MB    | 2.2 GB           |
+| region.parquet    |          1 KB       | 1 KB             |
+| supplier.parquet  |            901 KB     | 43 MB            |
 
 **customer**
 

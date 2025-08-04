@@ -62,6 +62,104 @@ TODO
 
 Here are the results of the TPC-H queries on scale factor 50.
 
+```mermaid
+erDiagram
+
+    CUSTOMER ||--o{ ORDERS : places
+    ORDERS ||--|{ LINEITEM : contains
+    CUSTOMER }|--|| NATION : from
+    SUPPLIER }|--|| NATION : from
+    NATION }|--|| REGION : in
+    SUPPLIER ||--o{ PARTSUPP : supplies
+    PART ||--o{ PARTSUPP : has
+    LINEITEM }|--|| PARTSUPP : references
+
+    CUSTOMER {
+        int C_CUSTKEY
+        string C_NAME
+        string C_ADDRESS
+        int C_NATIONKEY
+        string C_PHONE
+        number C_ACCTBAL
+        string C_MKTSEGMENT
+        string C_COMMENT
+    }
+
+    ORDERS {
+        int O_ORDERKEY
+        int O_CUSTKEY
+        string O_ORDERSTATUS
+        number O_TOTALPRICE
+        string O_ORDERDATE
+        string O_ORDERPRIORITY
+        string O_CLERK
+        int O_SHIPPRIORITY
+        string O_COMMENT
+    }
+
+    LINEITEM {
+        int L_ORDERKEY
+        int L_LINENUMBER
+        int L_PARTKEY
+        int L_SUPPKEY
+        number L_QUANTITY
+        number L_EXTENDEDPRICE
+        number L_DISCOUNT
+        number L_TAX
+        string L_RETURNFLAG
+        string L_LINESTATUS
+        string L_SHIPDATE
+        string L_COMMITDATE
+        string L_RECEIPTDATE
+        string L_SHIPINSTRUCT
+        string L_SHIPMODE
+        string L_COMMENT
+    }
+
+    PART {
+        int P_PARTKEY
+        string P_NAME
+        string P_MFGR
+        string P_BRAND
+        string P_TYPE
+        int P_SIZE
+        string P_CONTAINER
+        number P_RETAILPRICE
+        string P_COMMENT
+    }
+
+    SUPPLIER {
+        int S_SUPPKEY
+        string S_NAME
+        string S_ADDRESS
+        int S_NATIONKEY
+        string S_PHONE
+        number S_ACCTBAL
+        string S_COMMENT
+    }
+
+    PARTSUPP {
+        int PS_PARTKEY
+        int PS_SUPPKEY
+        int PS_AVAILQTY
+        number PS_SUPPLYCOST
+        string PS_COMMENT
+    }
+
+    NATION {
+        int N_NATIONKEY
+        string N_NAME
+        int N_REGIONKEY
+        string N_COMMENT
+    }
+
+    REGION {
+        int R_REGIONKEY
+        string R_NAME
+        string R_COMMENT
+    }
+```
+
 **query 1**
 
 This query provides a report of sales and shipping activity for line items that were shipped before October 24, 1998 (68 days before December 1, 1998). The goal is to help the business understand order volumes, pricing, discounts, and charges, grouped by how items were returned and their shipping status.
