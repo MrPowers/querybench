@@ -14,9 +14,9 @@ This repo provides clear instructions on how to generate the datasets and descri
 
 ## TPC H on localhost
 
-Here are the TPC H queries for scale factor 50:
+Here are the TPC H queries for scale factor 40:
 
-![tpch-sf50](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/tpch-sf50.svg)
+![tpch-sf50](https://github.com/MrPowers/mrpowers-benchmarks/blob/main/images/tpch-sf40.svg)
 
 *Note these are TPC derivative and don't follow the official TPC methodology.*
 
