@@ -44,7 +44,9 @@ Here are the TPC H query results for various scale factors.
 
 ![](./images/tpch-sf20.svg)
 
-![](./images/tpch-sf50.svg)
+![](./images/tpch-sf40.svg)
+
+![](./images/tpch-sf60.svg)
 
 ![](./images/tpch-sf80.svg)
 

@@ -2,6 +2,7 @@ import polars as pl
 import daft
 
 import querybench
+import querybench.polars.tpch_queries
 import sys
 import pandas as pd
 from datafusion import SessionContext
@@ -11,15 +12,20 @@ import os
 path = sys.argv[1]
 sf = sys.argv[2]
 
-# # polars
-# print("*** Polars ***")
-# df = pl.scan_parquet(path, low_memory=True)
-# df = df.with_columns(
-#     (pl.col("EventTime") * int(1e6)).cast(pl.Datetime(time_unit="us")),
-#     pl.col("EventDate").cast(pl.Date),
-# )
-# polars_res = polars_clickbench_queries.run_benchmarks(df).rename(columns={"duration": "polars"})
-# print(polars_res)
+# polars
+print("*** Polars ***")
+customer = pl.scan_parquet(f"{path}/tpch_sf{sf}/customer.parquet")
+lineitem = pl.scan_parquet(f"{path}/tpch_sf{sf}/lineitem.parquet")
+nation = pl.scan_parquet(f"{path}/tpch_sf{sf}/nation.parquet")
+orders = pl.scan_parquet(f"{path}/tpch_sf{sf}/orders.parquet")
+part = pl.scan_parquet(f"{path}/tpch_sf{sf}/part.parquet")
+partsupp = pl.scan_parquet(f"{path}/tpch_sf{sf}/partsupp.parquet")
+region = pl.scan_parquet(f"{path}/tpch_sf{sf}/region.parquet")
+supplier = pl.scan_parquet(f"{path}/tpch_sf{sf}/supplier.parquet")
+
+tables = (customer, lineitem, nation, orders, part, partsupp, region, supplier)
+polars_res = querybench.polars.tpch_queries.run_benchmarks(tables).rename(columns={"duration": "polars"})
+print(polars_res)
 
 # datafusion
 print("*** DataFusion ***")
@@ -60,7 +66,7 @@ duckdb_res = querybench.duckdb.tpch_queries.run_benchmarks(paths).rename(columns
 res = (
     datafusion_res
     .join(duckdb_res, on="task")
-    # .join(polars_res, on="task")
+    .join(polars_res, on="task")
     # .join(daft_res, on="task")
 )
 # res = datafusion_res

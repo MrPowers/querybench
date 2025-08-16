@@ -28,6 +28,8 @@ shape: (100_000_000, 9)
 ```
 Schema({'id1': String, 'id2': String, 'id3': String, 'id4': Int64, 'id5': Int64, 'id6': Int64, 'v1': Int64, 'v2': Int64, 'v3': Float64})
 
+### h2o join tables
+
 ***
 /Users/matthewpowers/data/J1_1e8_NA_0_0.parquet
 shape: (100_000_000, 7)
@@ -123,10 +125,6 @@ shape: (100_000_000, 7)
 └─────┴───────┴──────────┴───────┴─────────┴────────────┴───────────┘
 ```
 Schema({'id1': Int64, 'id2': Int64, 'id3': Int64, 'id4': String, 'id5': String, 'id6': String, 'v2': Float64})
-
-### h2o join tables
-
-The h2o join tables are TODO
 
 ## ClickBench
 
@@ -303,7 +301,8 @@ limit 3;
 * 3 columns
 
 ```sql
-select r_regionkey, r_name from read_parquet('region.parquet');
+select r_regionkey, r_name 
+from read_parquet('region.parquet');
 ```
 
 ```
@@ -325,7 +324,8 @@ select r_regionkey, r_name from read_parquet('region.parquet');
 * 7 columns
 
 ```sql
-select s_suppkey, s_address, s_phone from read_parquet('supplier.parquet') limit 3;
+select s_suppkey, s_address, s_phone 
+from read_parquet('supplier.parquet') limit 3;
 ```
 
 ```
