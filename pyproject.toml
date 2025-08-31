@@ -13,4 +13,8 @@ dependencies = [
     "polars>=1.31.0",
     "mkdocs",
     "mkdocs-material",
+    "pysail",
+    "pyspark",
+    "grpcio",
+    "grpcio-status"
 ]

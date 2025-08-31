@@ -43,6 +43,33 @@ ctx.register_parquet("supplier", f"{path}/tpch_sf{sf}/supplier.parquet")
 datafusion_res = querybench.datafusion.tpch_queries.run_benchmarks(ctx).rename(columns={"duration": "datafusion"})
 print(datafusion_res)
 
+# sail
+print("*** Sail ***")
+from pysail.spark import SparkConnectServer
+from pyspark.sql import SparkSession
+
+server = SparkConnectServer()
+server.start()
+_, port = server.listening_address
+
+spark = SparkSession.builder.remote(f"sc://localhost:{port}").getOrCreate()
+
+print("I AM HERE")
+spark.sql("SELECT 1 + 1").show()
+
+print("***")
+print(path)
+spark.read.parquet(f"{path}/tpch_sf{sf}/customer.parquet").createOrReplaceTempView("customer")
+spark.read.parquet(f"{path}/tpch_sf{sf}/lineitem.parquet").createOrReplaceTempView("lineitem")
+spark.read.parquet(f"{path}/tpch_sf{sf}/nation.parquet").createOrReplaceTempView("nation")
+spark.read.parquet(f"{path}/tpch_sf{sf}/orders.parquet").createOrReplaceTempView("orders")
+spark.read.parquet(f"{path}/tpch_sf{sf}/part.parquet").createOrReplaceTempView("part")
+spark.read.parquet(f"{path}/tpch_sf{sf}/partsupp.parquet").createOrReplaceTempView("partsupp")
+spark.read.parquet(f"{path}/tpch_sf{sf}/region.parquet").createOrReplaceTempView("region")
+spark.read.parquet(f"{path}/tpch_sf{sf}/supplier.parquet").createOrReplaceTempView("supplier")
+sail_res = querybench.sail.tpch_queries.run_benchmarks(spark).rename(columns={"duration": "sail"})
+print(sail_res)
+
 # # daft
 # print("*** Daft ***")
 # df = daft.read_parquet(path)
@@ -67,6 +94,7 @@ res = (
     datafusion_res
     .join(duckdb_res, on="task")
     .join(polars_res, on="task")
+    .join(sail_res, on="task")
     # .join(daft_res, on="task")
 )
 # res = datafusion_res
