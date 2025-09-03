@@ -51,6 +51,8 @@ from pyspark.sql import SparkSession
 server = SparkConnectServer()
 server.start()
 _, port = server.listening_address
+os.environ["SAIL_SPARK__SESSION_TIMEOUT_SECS"] = "3600"
+os.environ["SAIL_EXECUTION__BATCH_SIZE"] = "4096"
 
 spark = SparkSession.builder.remote(f"sc://localhost:{port}").getOrCreate()
 
